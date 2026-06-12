@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G12 - Hopper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mainBlue: '#0066ff',
+                        darkBlue: '#1a0099',
+                        lightBlue: '#33ccff',
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-gradient-blue {
+                background: linear-gradient(180deg, #0066ff 0%, #33ccff 100%);
+            }
+            .card-shadow {
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            }
+            .tab-active {
+                background-color: #33ccff;
+                color: #000;
+            }
+            .tab-inactive {
+                background-color: #80dfff;
+                color: #000;
+            }
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-blue min-h-screen p-4 md:p-8 font-sans">
+
+    <h1 class="text-center text-4xl md:text-5xl font-black text-black mb-8 md:mb-12">G12 - HOPPER</h1>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+        <div class="bg-darkBlue rounded-[2rem] p-8 md:p-10 card-shadow min-h-[450px] md:min-h-[550px] flex flex-col">
+            <h2 class="text-3xl md:text-4xl font-bold text-black mb-6">Reminder (Next Week)</h2>
+            <!-- Reminder List - 7 lines -->
+            <div class="flex-1 space-y-4 text-black text-xl md:text-2xl font-medium">
+                <p>• MIL - Notebook Color (GREEN)</p>
+                <p>• HOPE - PAR Q</p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="bg-darkBlue rounded-[2rem] p-8 md:p-10 card-shadow min-h-[450px] md:min-h-[550px]">
+            
+            <div id="daysWrapper" class="overflow-x-auto no-scrollbar mb-8">
+                <div id="daysContainer" class="flex gap-3 min-w-max px-2">
+                    <button data-day="monday" class="tab-active px-5 py-2 rounded-full font-semibold text-lg transition-all whitespace-nowrap">Monday</button>
+                    <button data-day="tuesday" class="tab-inactive px-5 py-2 rounded-full font-semibold text-lg transition-all whitespace-nowrap">Tuesday</button>
+                    <button data-day="wednesday" class="tab-inactive px-5 py-2 rounded-full font-semibold text-lg transition-all whitespace-nowrap">Wednesday</button>
+                    <button data-day="thursday" class="tab-inactive px-5 py-2 rounded-full font-semibold text-lg transition-all whitespace-nowrap">Thursday</button>
+                    <button data-day="friday" class="tab-inactive px-5 py-2 rounded-full font-semibold text-lg transition-all whitespace-nowrap">Friday</button>
+                </div>
+            </div>
+
+            <h2 class="text-4xl font-bold text-black mb-6 text-center">Cleaners</h2>
+            <div id="cleanersList" class="space-y-4 text-center">
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="mt-12 md:mt-16 text-center pb-8">
+        <div class="flex justify-center gap-8 text-5xl">
+            <a href="https://facebook.com" target="_blank" class="text-black hover:text-blue-700 transition-colors duration-200" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-square"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="text-black hover:text-gray-800 transition-colors duration-200" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+        <p class="mt-4 text-black text-sm">© 2026 G12 - Hopper</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
