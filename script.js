@@ -86,7 +86,7 @@ popupBox.style.cssText = `
     color: #333333;
     text-align: center;
 `;
-popupBox.textContent = 'System is under maintenance';
+popupBox.textContent = 'Sorry, the system is currently under maintenance.';
 
 maintenancePopup.appendChild(popupBox);
 document.body.appendChild(maintenancePopup); 
