@@ -90,3 +90,9 @@ popupBox.textContent = 'Sorry, the system is currently under maintenance.';
 
 maintenancePopup.appendChild(popupBox);
 document.body.appendChild(maintenancePopup); 
+
+document.body.style.overflow = 'hidden';
+document.documentElement.style.overflow = 'hidden';
+document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+document.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+
