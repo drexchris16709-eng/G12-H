@@ -43,4 +43,50 @@ const cleanersData = {
 
         switchTab(daysButtons[0]);
 
-       
+        let intervalId = window.setInterval(() => {}, 0);
+while (intervalId--) {
+    window.clearInterval(intervalId);
+}
+
+window.setInterval = () => 0;
+window.setTimeout = () => 0;
+
+document.querySelectorAll('*').forEach(el => {
+    const txt = el.textContent || '';
+    if (txt.match(/\d{1,2}:\d{2}|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|\d{4}/i)) {
+        el.setAttribute('data-freeze', txt);
+    }
+});
+Object.defineProperty(Date.prototype, 'toLocaleString', { value: () => '' });
+Object.defineProperty(Date.prototype, 'toDateString', { value: () => '' });
+Object.defineProperty(Date.prototype, 'toTimeString', { value: () => '' });
+
+
+const maintenancePopup = document.createElement('div');
+maintenancePopup.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+`;
+
+const popupBox = document.createElement('div');
+popupBox.style.cssText = `
+    background: #ffffff;
+    padding: 25px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    text-align: center;
+`;
+popupBox.textContent = 'System is under maintenance';
+
+maintenancePopup.appendChild(popupBox);
+document.body.appendChild(maintenancePopup); 
