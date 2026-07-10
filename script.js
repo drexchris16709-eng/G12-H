@@ -46,6 +46,38 @@ const content = document.getElementById("content");
 
 content.innerHTML = `
 
+<div id="officerModalOverlay"></div>
+
+<div id="officerTriangleBtn" onclick="openOfficerModal()">
+    <span></span>
+</div>
+
+<div id="officerSideModal">
+
+    <button id="closeOfficerModal" onclick="closeOfficerModal()">✕</button>
+
+    <div id="officerModalLeft">
+        <button onclick="changeOfficer('President')">President</button>
+        <button onclick="changeOfficer('Vice President')">Vice President</button>
+        <button onclick="changeOfficer('Secretary')">Secretary</button>
+        <button onclick="changeOfficer('External Secretary')">External Secretary</button>
+        <button onclick="changeOfficer('Treasurer')">Treasurer</button>
+        <button onclick="changeOfficer('Auditor')">Auditor</button>
+        <button onclick="changeOfficer('P.I.O')">P.I.O</button>
+        <button onclick="changeOfficer('S.M.M')">S.M.M</button>
+        <button onclick="changeOfficer('PO1')">PO1</button>
+        <button onclick="changeOfficer('PO2')">PO2</button>
+        <button onclick="changeOfficer('Secretary Document')">Secretary Document</button>
+    </div>
+
+    <div id="officerModalRight">
+        <img id="officerPicture" src="logo.jpg">
+        <h2 id="officerName">Select Officer</h2>
+        <p id="officerText">Click a button to view information.</p>
+    </div>
+
+</div>
+
 <h1 id="officersTitle">Class Officers</h1>
 
 <div id="officersContainer">
@@ -68,7 +100,7 @@ content.innerHTML = `
 
 <li id="officerPIO"><strong>P.I.O:</strong>Christian Andrie B. Lumpod</li>
 
-<li id="SMM"><strong>SMM:</strong>Christopher Johann D. Olanolan</li>
+<li id="SMM"><strong>S.M.M:</strong>Christopher Johann D. Olanolan</li>
 
 <li id="PO1"><strong>PO1:</strong>Kyle Jassem T. Bandalan</li>
 
@@ -147,50 +179,117 @@ function updateTime(){
 updateTime();
 setInterval(updateTime,1000);
 
-let intervalId = window.setInterval(() => {}, 0);
-while (intervalId--) {
-    window.clearInterval(intervalId);
+window.addEventListener("load", () => {
+    document.getElementById("welcomeModal").classList.add("show");
+});
+
+function closeWelcomeModal(){
+    document.getElementById("welcomeModal").classList.remove("show");
 }
 
-window.setInterval = () => 0;
-window.setTimeout = () => 0;
+function goHome(){
+    location.reload();
+}
 
-document.querySelectorAll('*').forEach(el => {
-    const txt = el.textContent || '';
-    if (txt.match(/\d{1,2}:\d{2}|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|\d{4}/i)) {
-        el.setAttribute('data-freeze', txt);
-    }
+const sidebarButtons = sidebar.querySelectorAll("button");
+
+sidebarButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        sidebar.classList.add("hide");
+    });
 });
-Object.defineProperty(Date.prototype, 'toLocaleString', { value: () => '' });
-Object.defineProperty(Date.prototype, 'toDateString', { value: () => '' });
-Object.defineProperty(Date.prototype, 'toTimeString', { value: () => '' });
+
+function showSidebar(){
+    sidebar.classList.remove("hide");
+}
+
+function openOfficerModal(){
+document.getElementById("officerSideModal").classList.add("active");
+}
+
+function closeOfficerModal(){
+document.getElementById("officerSideModal").classList.remove("active");
+}
+
+function changeOfficer(position){
+
+    const officerPicture = document.getElementById("officerPicture");
+    const officerName = document.getElementById("officerName");
+    const officerText = document.getElementById("officerText");
 
 
-const maintenancePopup = document.createElement('div');
-maintenancePopup.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999;
-`;
+    const officers = {
 
-const popupBox = document.createElement('div');
-popupBox.style.cssText = `
-    background: #ffffff;
-    padding: 25px 40px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333333;
-    text-align: center;
-`;
-popupBox.textContent = 'Coming Soon (NEW UI)';
+        "President":{
+            image:"logo.jpg",
+            text:"The President leads the class and oversees all activities and meetings, make sure that class goals and responsibilities are carried out effectively."
+        },
 
-maintenancePopup.appendChild(popupBox);
-document.body.appendChild(maintenancePopup); 
+        "Vice President":{
+            image:"vp.jpg",
+            text:"The Vice President assists the President in leading the class and managing its activities, and also take over the President's responsibilities whenever the President is absent or unavailable."
+        },
+
+        "Secretary":{
+            image:"logo.jpg",
+            text:"The Secretary records the minutes of meetings and keeps important class documents organized, and also prepare reports and maintain official records."
+        },
+
+        "External Secretary":{
+            image:"logo.jpg",
+            text:"The External Secretary communicates with other classes, organizations, and school offices, and help coordinate external events and partnerships."
+        },
+
+        "Treasurer":{
+            image:"logo.jpg",
+            text:"The Treasurer manages the class funds and keeps accurate financial records, collecting fees and prepare financial reports for the class."
+        },
+
+        "Auditor":{
+            image:"logo.jpg",
+            text:"The Auditor checks the Treasurer's financial records for accuracy and transparency, ensuring that all class funds are properly accounted for."
+        },
+
+        "P.I.O":{
+            image:"pio.jpg",
+            text:"The Public Information Officer shares important announcements, updates, and activities with the class, and ensure that students receive accurate information in a clear and timely manner"
+        },
+
+        "S.M.M":{
+            image:"logo.jpg",
+            text:"The Social Media Manager manages the class's social media accounts and creates engaging posts, promoting class activities and keep students updated through online platforms."
+        },
+
+        "PO1":{
+            image:"logo.jpg",
+            text:"The Peace Officer 1 helps maintain order and discipline during class activities and meetings, encourage students to follow school rules and promote a safe environment."
+        },
+
+        "PO2":{
+            image:"logo.jpg",
+            text:"The Peace Officer 2 assists PO1 in maintaining peace and discipline within the class, helping resolve minor issues and support the officers during events."
+        },
+
+        "Secretary Document":{
+            image:"logo.jpg",
+            text:"The Secretary for Documentation takes photos, videos, and other records of class activities and events, organize and preserve documentation for reports, presentations, and future reference."
+        }
+
+    };
+
+
+    officerPicture.src = officers[position].image;
+    officerName.innerHTML = position;
+    officerText.innerHTML = officers[position].text;
+
+}
+
+function openOfficerModal(){
+    document.getElementById("officerSideModal").classList.add("active");
+    document.getElementById("officerModalOverlay").classList.add("active");
+}
+
+function closeOfficerModal(){
+    document.getElementById("officerSideModal").classList.remove("active");
+    document.getElementById("officerModalOverlay").classList.remove("active");
+}
