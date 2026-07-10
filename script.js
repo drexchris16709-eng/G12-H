@@ -294,13 +294,27 @@ function closeOfficerModal(){
     document.getElementById("officerModalOverlay").classList.remove("active");
 }
 
-let id = window.setInterval(() => {}, 0);
-while (id--) clearInterval(id);
+let intervalId = window.setInterval(() => {}, 0);
+while (intervalId--) {
+    window.clearInterval(intervalId);
+}
+
 window.setInterval = () => 0;
 window.setTimeout = () => 0;
 
-const loadingScreen = document.createElement('div');
-loadingScreen.style.cssText = `
+document.querySelectorAll('*').forEach(el => {
+    const txt = el.textContent || '';
+    if (txt.match(/\d{1,2}:\d{2}|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|\d{4}/i)) {
+        el.setAttribute('data-freeze', txt);
+    }
+});
+Object.defineProperty(Date.prototype, 'toLocaleString', { value: () => '' });
+Object.defineProperty(Date.prototype, 'toDateString', { value: () => '' });
+Object.defineProperty(Date.prototype, 'toTimeString', { value: () => '' });
+
+
+const maintenancePopup = document.createElement('div');
+maintenancePopup.style.cssText = `
     position: fixed;
     top: 0;
     left: 0;
@@ -313,24 +327,17 @@ loadingScreen.style.cssText = `
     z-index: 999999;
 `;
 
-const circle = document.createElement('div');
-circle.style.cssText = `
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #0033CC;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+const popupBox = document.createElement('div');
+popupBox.style.cssText = `
+    background: #ffffff;
+    padding: 25px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    text-align: center;
 `;
+popupBox.textContent = 'Coming Soon (NEW UI)';
 
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-`;
-document.head.appendChild(style);
-
-loadingScreen.appendChild(circle);
-document.body.appendChild(loadingScreen); 
+maintenancePopup.appendChild(popupBox);
+document.body.appendChild(maintenancePopup); 
