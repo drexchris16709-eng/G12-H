@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png"href="logo.jpg"><title>Graceful Hopper</title>
+
+<title>Graceful Hopper</title>
 
 <style>
 
@@ -53,7 +54,6 @@ z-index:99999;
     transform:translateX(-40px);
 }
 
-/* Open animation */
 .sidebar.active button{
     animation: fadeIn .5s ease forwards;
 }
@@ -453,6 +453,294 @@ font-size: 26px;
     }
 }
 
+.welcome-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    opacity:0;
+    visibility:hidden;
+    transition:0.35s ease;
+}
+
+.welcome-modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.profile-circle{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid #00bfff;
+    box-shadow:0 0 30px #00bfff;
+    margin-bottom:30px;
+}
+
+.welcome-content{
+    width:700px;
+    max-width:90%;
+    min-height:600px;
+    border-radius:25px;
+    text-align:center;
+    padding:50px;
+    position:relative;
+    z-index:1;
+    animation:popup 0.4s ease;
+
+}
+
+.welcome-content::before{
+    content:"";
+    position:absolute;
+    inset:-4px;
+    border-radius:30px;
+    background:linear-gradient(
+        90deg,
+        #00e5ff,
+        #00bfff,
+        #66ffff,
+        #00bfff,
+        #00e5ff
+    );
+    background-size:300% 300%;
+    z-index:-1;
+    filter:blur(10px);
+    animation:neonGradient 4s linear infinite;
+}
+
+@keyframes neonGradient{
+    0%{
+        background-position:0% 50%;
+    }
+    100%{
+        background-position:300% 50%;
+    }
+}
+
+.welcome-content h2{
+    font-size:42px;
+    color:#FFD54F;
+    margin:0 0 20px;
+    font-weight:bold;
+}
+
+.welcome-text .line1{
+    display:block;
+    font-size:28px;
+    font-weight:bold;
+    color:#000;
+    margin-bottom:12px;
+}
+
+.welcome-text .line2{
+    display:block;
+    font-size:20px;
+    color:#555;
+}
+
+.close-btn{
+    position:absolute;
+    top:18px;
+    right:22px;
+    background:none;
+    border:none;
+    color:#ff0000;
+    font-size:40px;
+    cursor:pointer;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.75);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+#homeHeader{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+#homeIconBtn{
+    width:40px;
+    height:40px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+#homeIconBtn:hover{
+    background:#222;
+    transform:scale(1.05);
+}
+
+#officerTriangleBtn{
+    position:fixed;
+    right:2%;
+    top:50%;
+    width:130px;
+    height:180px;
+    background:#00bfff;
+    clip-path:polygon(0 50%,100% 0,100% 100%);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    transition:.3s;
+}
+
+#officerTriangleBtn{
+animation:
+officerTriangleFloat 2s infinite ease-in-out,
+triangleGlow 1.5s infinite alternate;
+}
+
+#officerTriangleBtn span{
+    color:white;
+    font-size:35px;
+    font-weight:bold;
+}
+
+@keyframes officerTriangleFloat{
+0%,100%{
+transform:translateX(-50%);
+}
+
+50%{
+transform:translateX(calc(-50% + 15px));
+}
+}
+
+#officerTriangleBtn::after{
+content:"";
+position:absolute;
+top:-60px;
+left:220px;
+width:45px;
+height:300px;
+background:white;
+opacity:.7;
+transform:rotate(45deg);
+animation:triangleLight 2s infinite;
+}
+
+@keyframes triangleLight{
+0%{
+left:220px;
+}
+
+100%{
+left:-150px;
+}
+}
+
+#officerSideModal{
+    position:fixed;
+    right:-1000px;
+    top:50%;
+    transform:translateY(-50%);
+    width:800px;
+    height:450px;
+    background:#2d00ff;
+    border-radius:20px;
+    display:flex;
+    padding:20px;
+    gap:20px;
+    transition:right .5s ease;
+    z-index:99999;
+}
+
+#officerSideModal.active{
+    right:calc(50% - 400px);
+}
+
+#closeOfficerModal{
+    position: absolute;
+    right: 4px;
+    top: 6px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 45px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+#officerModalLeft{
+width:35%;
+display:flex;
+flex-direction:column;
+gap:8px;
+overflow:auto;
+}
+
+#officerModalLeft button{
+padding:10px;
+border:none;
+border-radius:8px;
+background:#F4A623;
+color:white;
+cursor:pointer;
+overflow-y: hidden;
+}
+
+#officerModalRight{
+width:65%;
+text-align:center;
+color:white;
+font-size: 6px;
+}
+
+#officerPicture{
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom: 16px;
+}
+
+#officerModalOverlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+    opacity:0;
+    visibility:hidden;
+    transition:.5s;
+    z-index:99998;
+}
+
+#officerModalOverlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
 /* ===========================
    Mobile Responsive
 =========================== */
@@ -620,6 +908,52 @@ font-size: 14px;
         transform: scale(1.15);
     }
 
+    #officerTriangleBtn{
+width:40px;
+height:60px;
+}
+
+#officerTriangleBtn span{
+font-size:16px;
+}
+
+    #officerSideModal{
+        width:330px;
+        height:400px;
+        right:-120%;
+        left:auto;
+        top:50%;
+        transform:translateY(-50%);
+        overflow-y:auto;
+        transition:right .5s ease;
+    }
+
+    #officerSideModal.active{
+        right:5%;
+    }
+
+#officerModalLeft button{
+font-size:11px;
+padding:6px;
+}
+
+#officerModalRight{
+    width:65%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+#officerPicture{
+    width:210px;
+    height:210px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
 @media (max-width:480px){
 
 .sidebar{
@@ -663,7 +997,10 @@ height:calc(100vh - 190px);
 
 <div class="sidebar" id="sidebar">
 
-<h1>Home</h1>
+<div id="homeHeader">
+    <button id="homeIconBtn" onclick="goHome()">⌂</button>
+    <h1>Home</h1>
+</div>
 
 <button>Cleaners</button>
 <button>Reminders</button>
@@ -693,7 +1030,6 @@ height:calc(100vh - 190px);
 </div>
 
 <div class="content" id="content">
-
 <h1 class="welcomeTitle">Welcome to Graceful Hopper</h1>
 
 <p style="color:white; padding:0 20px 20px; line-height:1.8; text-align:justify;">
@@ -748,9 +1084,17 @@ Thank you for visiting the Graceful Hopper class page. We hope this platform hel
     </div>
 </div>
 
+<div id="welcomeModal" class="welcome-modal">
+  <div class="welcome-content">
+    <button class="close-btn" onclick="closeWelcomeModal()">&times;</button>
+
+    <img src="logo.jpg" alt="Profile" class="profile-circle">
+
+    <h2>Welcome!</h2>
+<p class="welcome-text">
+    <span class="line1">Adviser: Jeffrey Macabare</span><br>
+    <span class="line2">Created by Christian Andrie Lumpod</span>
+</p>
 </div>
 
-<script src="script.js"></script>
-
-</body>
-</html>
+</div>
