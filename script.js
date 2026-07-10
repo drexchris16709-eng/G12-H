@@ -1,98 +1,148 @@
-const cleanersData = {
-            monday: ["ALELUYA", "OLANOLAN", "JARABE", "FELISILDA", "BANDALAN", "AMISTOSO"],
-            tuesday: ["AYAP", "DELAROSA", "CANGAYAO", "FRANCISCO", "BASIS", "JUANCE"],
-            wednesday: ["BADONG", "SANTILLAN", "MARQUEZ", "LUMPOD", "ALCANTARA", "AMOROSO"],
-            thursday: ["ARGAWANON", "SALINO", "ALMONTE", "BARRIOS", "LOBENDINO", "AYOSO", "SARA"],
-            friday: ["PINEDA", "CAUSING", "PRETAL", "MILGAR", "BORJA", "ALCANSE", "SERVO"]
-        };
+const sidebar = document.getElementById("sidebar");
+const menu = document.getElementById("menuBtn");
+const back = document.getElementById("backBtn");
+const main = document.querySelector(".main");
 
-        const daysButtons = document.querySelectorAll('#daysContainer button');
-        const cleanersListEl = document.getElementById('cleanersList');
-        const daysWrapper = document.getElementById('daysWrapper');
+window.onload = () => {
+    sidebar.classList.add("hide");
+    main.classList.add("full");
+    menu.classList.remove("hide");
+};
 
-        function updateCleaners(day) {
-            const names = cleanersData[day];
-            cleanersListEl.innerHTML = names.map(name => 
-                `<p class="text-2xl font-medium text-black">${name}</p>`
-            ).join('');
-        }
+menu.onclick = () => {
+    sidebar.classList.remove("hide");
+    main.classList.remove("full");
+    menu.classList.add("hide");
+};
 
-        function switchTab(activeBtn) {
-            daysButtons.forEach(btn => {
-                btn.classList.remove('tab-active');
-                btn.classList.add('tab-inactive');
-            });
-            activeBtn.classList.add('tab-active');
-            activeBtn.classList.remove('tab-inactive');
-            activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            updateCleaners(activeBtn.dataset.day);
-        }
+back.onclick = () => {
+    sidebar.classList.add("hide");
+    main.classList.add("full");
+    menu.classList.remove("hide");
+};
 
-        daysButtons.forEach(btn => btn.addEventListener('click', () => switchTab(btn)));
+let seconds=0;
 
-        let startX = 0;
-        let isDragging = false;
-        daysWrapper.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
-        daysWrapper.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const currentX = e.touches[0].clientX;
-            daysWrapper.scrollLeft += startX - currentX;
-            startX = currentX;
-        }, { passive: true });
-        daysWrapper.addEventListener('touchend', () => { isDragging = false; });
+const timer=document.getElementById("activeTime");
 
-        switchTab(daysButtons[0]);
+setInterval(()=>{
 
-        let intervalId = window.setInterval(() => {}, 0);
-while (intervalId--) {
-    window.clearInterval(intervalId);
+seconds++;
+
+let h=Math.floor(seconds/3600);
+let m=Math.floor((seconds%3600)/60);
+let s=seconds%60;
+
+timer.innerHTML=
+String(h).padStart(2,"0")+":"+
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
+
+},1000);
+
+function showOfficers(){
+
+const content = document.getElementById("content");
+
+content.innerHTML = `
+
+<h1 id="officersTitle">Class Officers</h1>
+
+<div id="officersContainer">
+
+<h2 id="officersHeading1">Graceful Hopper Officers</h2>
+
+<ol id="officersList">
+
+<li id="officerPresident"><strong>President:</strong>Eric John Milgar</li>
+
+<li id="officerVicePresident"><strong>Vice President:</strong>Christian Paul A. Pineda</li>
+
+<li id="officerSecretary"><strong>Secretary:</strong>Jean Louisse C. Causing</li>
+
+<li id="officerExternalSecretary"><strong>External Secretary:</strong>Rochel Ann Mae S. Alcanse</li>
+
+<li id="officerTreasurer"><strong>Treasurer:</strong>Amber Reign A. Ayap</li>
+
+<li id="officerAuditor"><strong>Auditor:</strong>Airish S. Amistoso</li>
+
+<li id="officerPIO"><strong>P.I.O:</strong>Christian Andrie B. Lumpod</li>
+
+<li id="SMM"><strong>SMM:</strong>Christopher Johann D. Olanolan</li>
+
+<li id="PO1"><strong>PO1:</strong>Kyle Jassem T. Bandalan</li>
+
+<li id="PO2"><strong>PO2:</strong>Franc Jarod F. Borja</li>
+
+<li id="SecretaryDocumentation"><strong>Secretary Documentation:</strong>John Vincent T. Pretal</li>
+
+</ol>
+
+</ul>
+
+<p id="officersDescription">
+These officers help lead the class, support the teacher, and help keep the classroom organized.
+</p>
+
+</div>
+
+`;
+
 }
 
-window.setInterval = () => 0;
-window.setTimeout = () => 0;
+menu.onclick = () => {
+    sidebar.classList.remove("hide", "closing");
+    sidebar.classList.add("active");
+};
 
-document.querySelectorAll('*').forEach(el => {
-    const txt = el.textContent || '';
-    if (txt.match(/\d{1,2}:\d{2}|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|\d{4}/i)) {
-        el.setAttribute('data-freeze', txt);
+back.onclick = () => {
+    sidebar.classList.remove("active");
+    sidebar.classList.add("closing");
+
+    setTimeout(() => {
+        sidebar.classList.add("hide");
+        sidebar.classList.remove("closing");
+    }, 500);
+};
+
+const triangleBtn = document.getElementById("triangleBtn");
+const dateModal = document.getElementById("dateModal");
+const closeModal = document.getElementById("closeModal");
+
+const liveClock = document.getElementById("liveClock");
+const currentDate = document.getElementById("currentDate");
+
+triangleBtn.onclick = () => {
+    dateModal.style.display = "flex";
+};
+
+closeModal.onclick = () => {
+    dateModal.style.display = "none";
+};
+
+dateModal.onclick = (e) => {
+    if (e.target === dateModal) {
+        dateModal.style.display = "none";
     }
-});
-Object.defineProperty(Date.prototype, 'toLocaleString', { value: () => '' });
-Object.defineProperty(Date.prototype, 'toDateString', { value: () => '' });
-Object.defineProperty(Date.prototype, 'toTimeString', { value: () => '' });
+};
 
+function updateTime(){
 
-const maintenancePopup = document.createElement('div');
-maintenancePopup.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999;
-`;
+    const now = new Date();
 
-const popupBox = document.createElement('div');
-popupBox.style.cssText = `
-    background: #ffffff;
-    padding: 25px 40px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333333;
-    text-align: center;
-`;
-popupBox.textContent = 'Sorry, the system is currently under maintenance.';
+    liveClock.textContent = now.toLocaleTimeString([],{
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+    });
 
-maintenancePopup.appendChild(popupBox);
-document.body.appendChild(maintenancePopup); 
+    currentDate.textContent = now.toLocaleDateString([],{
+        weekday:"long",
+        month:"long",
+        day:"numeric",
+        year:"numeric"
+    });
+}
 
-document.body.style.overflow = 'hidden';
-document.documentElement.style.overflow = 'hidden';
-document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
-document.addEventListener('wheel', e => e.preventDefault(), { passive: false });
-
+updateTime();
+setInterval(updateTime,1000);
