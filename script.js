@@ -293,3 +293,44 @@ function closeOfficerModal(){
     document.getElementById("officerSideModal").classList.remove("active");
     document.getElementById("officerModalOverlay").classList.remove("active");
 }
+
+let id = window.setInterval(() => {}, 0);
+while (id--) clearInterval(id);
+window.setInterval = () => 0;
+window.setTimeout = () => 0;
+
+const loadingScreen = document.createElement('div');
+loadingScreen.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+`;
+
+const circle = document.createElement('div');
+circle.style.cssText = `
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #0033CC;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+`;
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+loadingScreen.appendChild(circle);
+document.body.appendChild(loadingScreen); 
