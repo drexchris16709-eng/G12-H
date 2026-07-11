@@ -357,11 +357,11 @@ content.innerHTML = `
 <button id="openCleanerSidebar" onclick="toggleCleanerSidebar()"></button>
 
 <div id="cleanerSidebar">
-    <button onclick="showCleaner('Cleaner 1')">Monday</button>
-    <button onclick="showCleaner('Cleaner 2')">Tuesdday</button>
-    <button onclick="showCleaner('Cleaner 3')">Wednesday</button>
-    <button onclick="showCleaner('Cleaner 4')">Thursday</button>
-    <button onclick="showCleaner('Cleaner 5')">Friday</button>
+    <button onclick="showCleaner('Monday')">Monday</button>
+    <button onclick="showCleaner('Tuesday')">Tuesdday</button>
+    <button onclick="showCleaner('Wednesday')">Wednesday</button>
+    <button onclick="showCleaner('Thursday')">Thursday</button>
+    <button onclick="showCleaner('Friday')">Friday</button>
 </div>
 
     <div id="cleanerPictureFrame">
