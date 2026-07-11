@@ -236,7 +236,7 @@ function changeOfficer(position){
         },
 
         "External Secretary":{
-            image:"logo.jpg",
+            image:"ex.jpg",
             text:"The External Secretary communicates with other classes, organizations, and school offices, and help coordinate external events and partnerships."
         },
 
