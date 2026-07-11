@@ -365,7 +365,7 @@ content.innerHTML = `
 </div>
 
     <div id="cleanerPictureFrame">
-        <img id="cleanerImage" src="" alt="Cleaner Picture">
+        <img id="cleanerImage" src="" alt="logo.jpg">
         <h2 id="cleanerName">Select a Day</h2>
     </div>
 
@@ -431,7 +431,7 @@ function showCleaner(cleaner){
         "Tuesday":"logo.jpg",
         "Wednesday":"logo.jpg",
         "Thursday":"logo.jpg",
-        "Friday":"logo.jpg"
+        "Friday":"logo.jpg",
     };
 
     image.src = cleaners[cleaner];
