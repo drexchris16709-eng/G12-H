@@ -217,7 +217,6 @@ function changeOfficer(position){
     const officerName = document.getElementById("officerName");
     const officerText = document.getElementById("officerText");
 
-
     const officers = {
 
         "President":{
@@ -277,6 +276,62 @@ function changeOfficer(position){
 
     };
 
+document.addEventListener("click", function(e){
+
+    if(e.target.tagName === "IMG" && e.target.closest("#officerModalRight")){
+
+        const oldPopup = document.getElementById("officerImagePopup");
+        if(oldPopup){
+            oldPopup.remove();
+        }
+
+        const popup = document.createElement("div");
+        popup.id = "officerImagePopup";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "✕";
+        closeBtn.id = "closeOfficerImagePopup";
+
+        const frame = document.createElement("div");
+frame.id = "officerImageFrame";
+
+const img = document.createElement("img");
+img.src = e.target.src;
+
+const shine = document.createElement("div");
+shine.id = "officerImageShine";
+
+frame.appendChild(img);
+frame.appendChild(shine);
+
+popup.appendChild(closeBtn);
+popup.appendChild(frame);
+
+        document.body.appendChild(popup);
+
+        closeBtn.style.position = "fixed";
+        closeBtn.style.top = "25px";
+        closeBtn.style.right = "25px";
+        closeBtn.style.zIndex = "9999999";
+        closeBtn.style.pointerEvents = "auto";
+
+        img.style.maxWidth = "85vw";
+        img.style.maxHeight = "85vh";
+        img.style.objectFit = "contain";
+
+        closeBtn.addEventListener("click", function(){
+            popup.remove();
+        });
+
+        popup.addEventListener("click", function(event){
+            if(event.target === popup){
+                popup.remove();
+            }
+        });
+
+    }
+
+});
 
     officerPicture.src = officers[position].image;
     officerName.innerHTML = position;
@@ -293,3 +348,100 @@ function closeOfficerModal(){
     document.getElementById("officerSideModal").classList.remove("active");
     document.getElementById("officerModalOverlay").classList.remove("active");
 }
+
+function showCleaners(){
+
+const content = document.getElementById("content");
+
+content.innerHTML = `
+<button id="openCleanerSidebar" onclick="toggleCleanerSidebar()"></button>
+
+<div id="cleanerSidebar">
+    <button onclick="showCleaner('Cleaner 1')">Monday</button>
+    <button onclick="showCleaner('Cleaner 2')">Tuesdday</button>
+    <button onclick="showCleaner('Cleaner 3')">Wednesday</button>
+    <button onclick="showCleaner('Cleaner 4')">Thursday</button>
+    <button onclick="showCleaner('Cleaner 5')">Friday</button>
+</div>
+
+    <div id="cleanerPictureFrame">
+        <img id="cleanerImage" src="" alt="Cleaner Picture">
+        <h2 id="cleanerName">Select a Day</h2>
+    </div>
+
+</div>
+`;
+}
+
+function toggleCleanerSidebar(){
+    document.getElementById("cleanerSidebar").classList.toggle("active");
+}
+
+function showCleaner(name){
+    document.getElementById("cleanerContent").innerHTML = `
+        <h1>${name}</h1>
+        <p>Information about ${name}.</p>
+    `;
+}
+
+function toggleCleanerSidebar(){
+
+    const sidebar = document.getElementById("cleanerSidebar");
+    const buttons = sidebar.querySelectorAll("button");
+
+
+    if(sidebar.classList.contains("active")){
+
+        buttons.forEach((btn,index)=>{
+            btn.classList.remove("openBtn");
+            setTimeout(()=>{
+                btn.classList.add("closeBtn");
+            }, index * 50);
+
+        });
+
+        setTimeout(()=>{
+            sidebar.classList.remove("active");
+            buttons.forEach(btn=>{
+                btn.classList.remove("closeBtn");
+            });
+        },400);
+
+    }else{
+        sidebar.classList.add("active");
+        buttons.forEach((btn,index)=>{
+            btn.classList.remove("closeBtn");
+            setTimeout(()=>{
+                btn.classList.add("openBtn");
+            }, index * 50);
+
+        });
+
+    }
+
+}
+
+function showCleaner(cleaner){
+
+    let image = document.getElementById("cleanerImage");
+    let name = document.getElementById("cleanerName");
+
+    let cleaners = {
+        "Monday":"logo.jpg",
+        "Tuesday":"logo.jpg",
+        "Wednesday":"logo.jpg",
+        "Thursday":"logo.jpg",
+        "Friday":"logo.jpg"
+    };
+
+    image.src = cleaners[cleaner];
+    name.innerHTML = cleaner;
+}
+
+const image = document.getElementById("image");
+
+const wrapper = document.createElement("div");
+wrapper.className = "imageWrapper";
+
+image.parentNode.insertBefore(wrapper, image);
+wrapper.appendChild(image);
