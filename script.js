@@ -365,7 +365,7 @@ content.innerHTML = `
 </div>
 
     <div id="cleanerPictureFrame">
-        <img id="cleanerImage" src="" alt="logo.jpg">
+        <img id="cleanerImage" src="logo.jpg" alt="">
         <h2 id="cleanerName">Select a Day</h2>
     </div>
 
