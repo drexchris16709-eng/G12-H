@@ -236,7 +236,7 @@ function changeOfficer(position){
         },
 
         "External Secretary":{
-            image:"ex.jpg",
+            image:"ex.jpeg",
             text:"The External Secretary communicates with other classes, organizations, and school offices, and help coordinate external events and partnerships."
         },
 
@@ -251,7 +251,7 @@ function changeOfficer(position){
         },
 
         "P.I.O":{
-            image:"pio.jpg",
+            image:"pio.jpeg",
             text:"The Public Information Officer shares important announcements, updates, and activities with the class, and ensure that students receive accurate information in a clear and timely manner"
         },
 
