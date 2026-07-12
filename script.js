@@ -220,7 +220,7 @@ function changeOfficer(position){
     const officers = {
 
         "President":{
-            image:"logo.jpg",
+            image:"pres.jpeg",
             text:"The President leads the class and oversees all activities and meetings, make sure that class goals and responsibilities are carried out effectively."
         },
 
@@ -230,7 +230,7 @@ function changeOfficer(position){
         },
 
         "Secretary":{
-            image:"logo.jpg",
+            image:"sec.jpeg",
             text:"The Secretary records the minutes of meetings and keeps important class documents organized, and also prepare reports and maintain official records."
         },
 
@@ -240,12 +240,12 @@ function changeOfficer(position){
         },
 
         "Treasurer":{
-            image:"logo.jpg",
+            image:"ts.jpeg",
             text:"The Treasurer manages the class funds and keeps accurate financial records, collecting fees and prepare financial reports for the class."
         },
 
         "Auditor":{
-            image:"logo.jpg",
+            image:"aud.jpeg",
             text:"The Auditor checks the Treasurer's financial records for accuracy and transparency, ensuring that all class funds are properly accounted for."
         },
 
@@ -255,22 +255,22 @@ function changeOfficer(position){
         },
 
         "S.M.M":{
-            image:"logo.jpg",
+            image:"smm.jpeg",
             text:"The Social Media Manager manages the class's social media accounts and creates engaging posts, promoting class activities and keep students updated through online platforms."
         },
 
         "PO1":{
-            image:"logo.jpg",
+            image:"po1.jpeg",
             text:"The Peace Officer 1 helps maintain order and discipline during class activities and meetings, encourage students to follow school rules and promote a safe environment."
         },
 
         "PO2":{
-            image:"logo.jpg",
+            image:"po2.jpeg",
             text:"The Peace Officer 2 assists PO1 in maintaining peace and discipline within the class, helping resolve minor issues and support the officers during events."
         },
 
         "Secretary Document":{
-            image:"logo.jpg",
+            image:"dc.jpeg",
             text:"The Secretary for Documentation takes photos, videos, and other records of class activities and events, organize and preserve documentation for reports, presentations, and future reference."
         }
 
