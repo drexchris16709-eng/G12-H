@@ -235,7 +235,7 @@ function changeOfficer(position){
         },
 
         "External Secretary":{
-            image:"ex.jpeg",
+            image:"logo.jpg",
             text:"The External Secretary communicates with other classes, organizations, and school offices, and help coordinate external events and partnerships."
         },
 
@@ -354,21 +354,26 @@ function showCleaners(){
 const content = document.getElementById("content");
 
 content.innerHTML = `
+
+<h1 class="CleanersTitle">Cleaners</h1>
+
 <button id="openCleanerSidebar" onclick="toggleCleanerSidebar()"></button>
 
 <div id="cleanerSidebar">
     <button onclick="showCleaner('Monday')">Monday</button>
-    <button onclick="showCleaner('Tuesday')">Tuesdday</button>
+    <button onclick="showCleaner('Tuesday')">Tuesday</button>
     <button onclick="showCleaner('Wednesday')">Wednesday</button>
     <button onclick="showCleaner('Thursday')">Thursday</button>
     <button onclick="showCleaner('Friday')">Friday</button>
 </div>
 
-    <div id="cleanerPictureFrame">
-        <img id="cleanerImage" src="logo.jpg" alt="">
-        <h2 id="cleanerName">Select a Day</h2>
-    </div>
+<div id="cleanerPictureFrame">
+    <img id="cleanerImage" src="logo.jpg" alt="" onclick="openCleanerPopup()">
+</div>
 
+<div id="cleanerImagePopup">
+    <button id="closeCleanerPopup" onclick="closeCleanerPopup()">✕</button>
+    <img id="popupCleanerImage" src="">
 </div>
 `;
 }
@@ -377,71 +382,268 @@ function toggleCleanerSidebar(){
     document.getElementById("cleanerSidebar").classList.toggle("active");
 }
 
-function showCleaner(name){
-    document.getElementById("cleanerContent").innerHTML = `
-        <h1>${name}</h1>
-        <p>Information about ${name}.</p>
-    `;
+function openCleanerPopup(){
+
+    document.getElementById("popupCleanerImage").src =
+        document.getElementById("cleanerImage").src;
+
+    document.getElementById("cleanerImagePopup").classList.add("active");
 }
 
-function toggleCleanerSidebar(){
+function closeCleanerPopup(){
 
-    const sidebar = document.getElementById("cleanerSidebar");
-    const buttons = sidebar.querySelectorAll("button");
-
-
-    if(sidebar.classList.contains("active")){
-
-        buttons.forEach((btn,index)=>{
-            btn.classList.remove("openBtn");
-            setTimeout(()=>{
-                btn.classList.add("closeBtn");
-            }, index * 50);
-
-        });
-
-        setTimeout(()=>{
-            sidebar.classList.remove("active");
-            buttons.forEach(btn=>{
-                btn.classList.remove("closeBtn");
-            });
-        },400);
-
-    }else{
-        sidebar.classList.add("active");
-        buttons.forEach((btn,index)=>{
-            btn.classList.remove("closeBtn");
-            setTimeout(()=>{
-                btn.classList.add("openBtn");
-            }, index * 50);
-
-        });
-
-    }
-
+    document.getElementById("cleanerImagePopup").classList.remove("active");
 }
 
 function showCleaner(cleaner){
 
     let image = document.getElementById("cleanerImage");
+    let popupImage = document.getElementById("popupCleanerImage");
     let name = document.getElementById("cleanerName");
 
     let cleaners = {
-        "Monday":"logo.jpg",
-        "Tuesday":"logo.jpg",
-        "Wednesday":"logo.jpg",
-        "Thursday":"logo.jpg",
-        "Friday":"logo.jpg",
+        "Monday":"m.jpg",
+        "Tuesday":"tue.jpg",
+        "Wednesday":"wed.jpg",
+        "Thursday":"th.jpg",
+        "Friday":"fr.jpg"
     };
 
+    currentCleanerIndex = cleanerDays.indexOf(cleaner);
+
     image.src = cleaners[cleaner];
-    name.innerHTML = cleaner;
+    popupImage.src = cleaners[cleaner];
+    name.textContent = cleaner;
 }
 
-const image = document.getElementById("image");
+const cleanerDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+];
 
-const wrapper = document.createElement("div");
-wrapper.className = "imageWrapper";
+let currentCleanerIndex = 0;
 
-image.parentNode.insertBefore(wrapper, image);
-wrapper.appendChild(image);
+let startX = 0;
+
+document.addEventListener("touchstart", function(e){
+
+    if(e.target.id !== "popupCleanerImage") return;
+
+    startX = e.touches[0].clientX;
+
+}, { passive: true });
+
+document.addEventListener("touchend", function(e){
+
+    if(e.target.id !== "popupCleanerImage") return;
+
+    let endX = e.changedTouches[0].clientX;
+    let distance = endX - startX;
+
+    if(Math.abs(distance) < 60) return;
+
+    if(distance < 0){
+        currentCleanerIndex++;
+
+        if(currentCleanerIndex >= cleanerDays.length){
+            currentCleanerIndex = 0;
+        }
+
+    }else{
+
+        currentCleanerIndex--;
+
+        if(currentCleanerIndex < 0){
+            currentCleanerIndex = cleanerDays.length - 1;
+        }
+
+    }
+
+    showCleaner(cleanerDays[currentCleanerIndex]);
+
+}, { passive: true });
+
+function openCleanerPopup(){
+
+    const popup = document.getElementById("cleanerImagePopup");
+    const popupImg = document.getElementById("popupCleanerImage");
+    const currentImg = document.querySelector("#cleanerPictureFrame img");
+
+    popupImg.src = currentImg.src;
+
+    popup.classList.add("active");
+}
+
+function closeCleanerPopup(){
+    document.getElementById("cleanerImagePopup").classList.remove("active");
+}
+
+function openInfoModal(){
+
+    document.getElementById("infoModal").classList.add("active");
+
+}
+
+function closeInfoModal(){
+
+    document.getElementById("infoModal").classList.remove("active");
+
+}
+
+const loading = document.createElement("div");
+loading.id = "pageLoading";
+
+loading.innerHTML = `
+<div id="loadingSpinner"></div>
+`;
+
+document.body.appendChild(loading);
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+#pageLoading{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999999;
+    backdrop-filter:blur(3px);
+}
+
+#loadingSpinner{
+    width:70px;
+    height:70px;
+    border:7px solid rgba(255,255,255,.2);
+    border-top:7px solid skyblue;
+    border-right:7px solid cyan;
+    border-radius:50%;
+    animation:loadingSpin .4s linear infinite;
+    box-shadow:
+        0 0 15px skyblue,
+        0 0 30px cyan;
+}
+
+@keyframes loadingSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+`;
+
+document.head.appendChild(style);
+
+function showLoading(){
+    loading.style.display = "flex";
+}
+
+function hideLoading(){
+    loading.style.display = "none";
+}
+
+// =========================
+// Automatic for ALL Buttons
+// =========================
+
+document.addEventListener("click",function(e){
+
+    const btn = e.target.closest("button");
+
+    if(!btn) return;
+
+    if(
+        btn.id === "closeCleanerPopup" ||
+        btn.id === "closeInfoModal" ||
+        btn.id === "closeOfficerModal" ||
+        btn.id === "closeOfficerImagePopup" ||
+        btn.id === "closeModal"
+    ){
+        return;
+    }
+
+    showLoading();
+
+    setTimeout(function(){
+
+        hideLoading();
+
+    },700);
+
+});
+
+function openInfoImage(img){
+
+    document.getElementById("popupInfoImage").src = img.src;
+
+    document.getElementById("infoImagePopup").classList.add("active");
+
+}
+
+function closeInfoImage(){
+
+    document.getElementById("infoImagePopup").classList.remove("active");
+
+}
+
+document.getElementById("infoImagePopup").addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closeInfoImage();
+
+    }
+
+});
+
+document.addEventListener("click", function(e){
+
+    const dateModal = document.querySelector(".dateModal");
+    if(dateModal && e.target === dateModal){
+        dateModal.style.display = "none";
+    }
+
+    const welcomeModal = document.querySelector(".welcome-modal");
+    if(welcomeModal && e.target === welcomeModal){
+        welcomeModal.classList.remove("show");
+    }
+
+    const officerOverlay = document.getElementById("officerModalOverlay");
+    const officerModal = document.getElementById("officerSideModal");
+
+    if(officerOverlay && e.target === officerOverlay){
+        officerOverlay.classList.remove("active");
+        officerModal.classList.remove("active");
+    }
+
+    const officerImagePopup = document.getElementById("officerImagePopup");
+    if(officerImagePopup && e.target === officerImagePopup){
+        officerImagePopup.style.display = "none";
+    }
+
+    const cleanerPopup = document.getElementById("cleanerImagePopup");
+    if(cleanerPopup && e.target === cleanerPopup){
+        cleanerPopup.classList.remove("active");
+    }
+
+    const infoModal = document.getElementById("infoModal");
+    if(infoModal && e.target === infoModal){
+        closeInfoModal();
+    }
+
+    const infoImagePopup = document.getElementById("infoImagePopup");
+    if(infoImagePopup && e.target === infoImagePopup){
+        infoImagePopup.classList.remove("active");
+    }
+
+});
