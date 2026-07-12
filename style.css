@@ -1679,9 +1679,9 @@ padding:6px;
     border:none;
     border-top:24px solid transparent;
     border-bottom:24px solid transparent;
-    border-left:45px solid skyblue;
+    border-left:45px solid #F4A623;
     position:relative;
-    top:20px;
+    top:90px;
     animation:
         openCleanerTrianglePointMobile 3s ease-in-out infinite,
         triangleGlow 1.5s ease-in-out infinite;
