@@ -1023,12 +1023,12 @@ margin-bottom: 16px;
 }
 
 #cleanerPictureFrame img{
-    width: 310px;
-    height:310px;
+    width: 340px;
+    height:340px;
     object-fit:contain;
     border-radius:15px;
-    margin-left: 20px;
-    margin-top: 27px;
+    margin-left: 5px;
+    margin-top: -21px;
 }
 
 #cleanerImagePopup{
