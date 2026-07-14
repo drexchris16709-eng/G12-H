@@ -691,7 +691,7 @@ popupBox.style.cssText = `
     color: #333333;
     text-align: center;
 `;
-popupBox.textContent = 'Pogi ni Ryle';
+popupBox.textContent = 'Analyn muko';
 
 maintenancePopup.appendChild(popupBox);
 document.body.appendChild(maintenancePopup); 
