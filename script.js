@@ -240,7 +240,7 @@ function changeOfficer(position){
         },
 
         "Treasurer":{
-            image:"ts.jpeg",
+            image:"tr.jpeg",
             text:"The Treasurer manages the class funds and keeps accurate financial records, collecting fees and prepare financial reports for the class."
         },
 
