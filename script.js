@@ -691,7 +691,7 @@ popupBox.style.cssText = `
     color: #333333;
     text-align: center;
 `;
-popupBox.textContent = 'System is under maintenance';
+popupBox.textContent = 'Pogi ni Ryle';
 
 maintenancePopup.appendChild(popupBox);
 document.body.appendChild(maintenancePopup); 
