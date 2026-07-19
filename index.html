@@ -3,44 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="icon" type="image/png"href="logo.jpg"><title>Graceful Hopper</title>
 
  <link rel="stylesheet" href="style.css">
 
+</style>
 </head>
-
 <body>
 
-<button id="menuBtn">☰</button>
+<div class="wcm-modal-overlay" id="wcmWelcomeModalUnique">
+    <div class="wcm-modal-card">
+        
+        <div class="wcm-video-container">
+            <video autoplay loop muted playsinline>
+                <source src="SDBG.mp4" type="video/mp4">
+            </video>
+            <div class="wcm-video-overlay"></div>
+        </div>
 
-<div class="sidebar" id="sidebar">
+        <div class="wcm-profile-pic-container">
+            <img class="wcm-profile-pic" src="bg.png" alt="Welcome Profile">
+<div class="gh-profile-pic-container">
+    <img class="gh-profile-pic" src="logo.jpg" alt="Welcome Profile">
+</div>
+        </div>
 
-<div id="homeHeader">
-    <button id="homeIconBtn" onclick="goHome()">⌂</button>
-    <h1>Home</h1>
+        <div class="wcm-modal-content">
+            <h2 class="wcm-modal-title">Welcome to Graceful Hopper!</h2>
+            <p class="wcm-modal-text">Powered by R.I.A & Super AI</p>
+            <button class="wcm-get-started-btn" id="wcmCloseModalBtnUnique">Enter</button>
+        </div>
+
+    </div>
 </div>
 
-<button onclick="showCleaners()">Cleaners</button>
-<button>Students Info</button>
-<button>Albums</button>
-<button onclick="showOfficers()">Officers</button>
-<button>Modules</button>
+<div id="topBar">
 
-<div class="timeBox">
-<h2>Active Time :</h2>
-<p id="activeTime">00:00:00</p>
+    <button id="menuBtn" onclick="toggleMenu()">☰</button>
+
+    <div id="title">R.I.A</div>
+
+ <div id="topRight">
+        <button id="loginBtn">Login</button>
+        <button id="signupBtn">Sign Up</button>
+    </div>
+
+    <div id="riaRedirectModalUnique">
+    <div id="riaRedirectBoxUnique">
+
+        <button id="riaRedirectCloseBtnUnique" onclick="closeRiaRedirectModalUnique()">✕</button>
+
+<img src="logoR.jpg" id="riaRedirectIconUnique">
+
+        <h2 id="riaRedirectTitleUnique">Redirect Confirmation</h2>
+
+        <p id="riaRedirectTextUnique">
+            Are you sure you want to redirect to the
+            <strong>R.I.A App</strong>?
+        </p>
+
+        <div id="riaRedirectButtonsUnique">
+            <button id="riaRedirectCancelBtnUnique" onclick="closeRiaRedirectModalUnique()">
+                Cancel
+            </button>
+
+            <button id="riaRedirectOkBtnUnique" onclick="goToRIAUnique()">
+                OK
+            </button>
+        </div>
+
+    </div>
 </div>
 
-<button class="back" id="backBtn">↩</button>
+<div id="riaUserTypeModal">
+
+    <div id="riaUserTypeBox">
+
+        <button id="riaUserTypeCloseBtn" onclick="closeRiaUserTypeModal()">✕</button>
+
+        <img src="logoR.jpg" id="riaUserTypeLogo">
+
+        <h2 id="riaUserTypeTitle">What kind of user are you?</h2>
+
+        <p id="riaUserTypeText">
+            Please select your account type to continue.
+        </p>
+
+        <div id="riaUserTypeButtons">
+
+            <button id="riaStudentBtn" onclick="selectStudent()">
+                Student
+            </button>
+
+            <button id="riaTeacherBtn" onclick="selectTeacher()">
+                Teacher
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="main">
+<div id="riaStudentLoginModal">
 
-<div class="banner">
+    <div id="riaStudentLoginBox">
 
-    <img id="banner" src="bg.png">
+        <button id="riaStudentLoginCloseBtn" onclick="closeStudentLogin()">✕</button>
+
+        <img src="logoR.jpg" id="riaStudentLoginLogo">
+
+        <h2>Student Login</h2>
+
+        <input
+            type="text"
+            id="riaStudentLRN"
+            placeholder="Enter LRN">
+
+        <input
+            type="password"
+            id="riaStudentPassword"
+            placeholder="Enter Password">
+
+        <button id="riaStudentLoginBtn" onclick="studentLogin()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+<div id="riaTeacherLoginModal">
+
+    <div id="riaTeacherLoginBox">
+
+        <button id="riaTeacherLoginCloseBtn" onclick="closeTeacherLogin()">✕</button>
+
+        <img src="logoR.jpg" id="riaTeacherLoginLogo">
+
+        <h2>Teacher Login</h2>
+
+        <input
+            type="tel"
+            id="riaTeacherContact"
+            placeholder="Enter Contact Number">
+
+        <input
+            type="password"
+            id="riaTeacherPassword"
+            placeholder="Enter Password">
+
+        <button id="riaTeacherLoginBtn" onclick="teacherLogin()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+<div id="riaSignupModalUnique">
+
+    <div id="riaSignupModalBoxUnique">
+
+<a href="https://www.facebook.com/drexx.zyhhx" target="_blank" rel="noopener noreferrer" class="riaFacebookWrapperUnique">
+    <button id="riaSignupFacebookButtonUnique">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+    </button>
+</a>
+        <button id="riaSignupCloseButtonUnique" onclick="closeSignupModal()">
+            ✕
+        </button>
+
+        <img src="logoR.jpg" id="riaSignupLogoUnique" alt="R.I.A Logo">
+
+        <h2 id="riaSignupTitleUnique">
+            Account Registration
+        </h2>
+
+        <p id="riaSignupDescriptionUnique">
+            Please contact the developer or any administrator to assist you in creating an account.
+        </p>
+
+        <div id="riaSignupActionsUnique">
+
+            <button id="riaSignupContactButtonUnique" onclick="contactDeveloper()">
+                Contact
+            </button>
+
+            <button id="riaSignupCancelButtonUnique" onclick="closeSignupModal()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<div id="sidebar">
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(0)">Home</button>
+        <div class="dropdown">
+            <button>Welcome Message</button>
+            <button>Latest Announcements</button>
+            <button>Upcoming Events</button>
+            <button>Quick Reminder</button>
+            <button>Featured Photos</button>
+            <button>Class Rules</button>
+            <button>School Calendar</button>
+            <button>Recent Activities Recap</button>
+            <button>Contact Us</button>
+            <button>Feedback</button>
+            <button>Announcements Archive</button>
+            <button>Theme</button>
+            <button>Class Schedule</button>
+            <button>Importants Links</button>
+            <button>Fund Badget</button>
+            <button>Rankings</button>
+            <button>Grades</button>
+            <button>Weather & Class Suspension</button>
+            <buttons>News & Updates</buttons>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(1)">Cleaners</button>
+        <div class="dropdown">
+            <button>List of Cleaners</button>
+            <button>Cleaning Guidlines & Standards</button>
+            <button>Supplies Checklist</button>
+            <button>Attendance Record</button>
+            <button>Reminders & Tips</button>
+            <button>Feedback Form</button>
+            <button>Before/After Photo Upload</button>
+            <button>Specific Task Assignments</button>
+            <button>Area Status Check</button>
+            <button>Submit Finished Report</button>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(2)">Attendance</button>
+        <div class="dropdown">
+            <button>Daily Attendance Record</button>
+            <button>Weekly Summary</button>
+            <button>Monthly Report</button>
+            <button>Absents & Late Lists</button>
+            <button>Excuse Slip Submission</button>
+            <button>Attendance Guidelines</button>
+            <button>Adviser Record</button>
+            <button>Overall Attendance Status</button>
+            <button>Medical Certificate Upload</button>
+            <button>Attendance Percentage</button>
+            <button>Correction Request Form</button>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(3)">Officers</button>
+        <div class="dropdown">
+            <button>President</button>
+            <button>Vice President</button>
+            <button>Secretary</button>
+            <button>External Secretary</button>
+            <button>Treasurer</button>
+            <button>Auditor</button>
+            <button>President</button>
+            <button>P.I.O</button>
+            <button>S.M.M</button>
+            <button>PO1</button>
+            <button>PO2</button>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(4)">Modules</button>
+        <div class="dropdown">
+            <button>All Subjects</button>
+            <button>Weekly Modules</button>
+            <button>Download Materials</button>
+            <button>Assigmenst Instructions</button>
+            <button>Submission Links</button>
+            <button>Reviewers & References</button>
+            <button>Missing Requirements</button>
+            <button>Archive Modules</button>
+            <button>File Request Form</button>
+            <button>Grade Reference Guide</button>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(5)">Settings</button>
+        <div class="dropdown">
+            <button>Edit Profile</button>
+            <button>Change Password</button>
+            <button>Notificatons</button>
+            <button>Privacy Settings</button>
+            <button>Help & Support</button>
+            <button>About This Website</button>
+            <button>Contact Developer</button>
+            <button>Emergency Contact</button>
+            <button>Class Code</button>
+            <button>Term of Use</button>
+            <button>Share Website Link</button>
+            <button>Backup & Restore</button>
+            <button>Set Homepage</button>
+            <button>Time Zone Settings</button>
+            <button>Animation Toggle</button>
+            <button>Super AI</button>
+            <button>Upload BG Video</button>
+        </div>
+    </div>
+
+    <div class="menuItem">
+        <button class="mainBtn" onclick="toggleDropdown(6)">Special</button>
+        <div class="dropdown">
+            <button>Research (R.I.A)</button>
+            <button>Admin Exclusive</button>
+            <button>Private Records</button>
+            <button>Restricted Area</button>
+            <button>Premium Access</button>
+            <button>Officers & Adviser Only</button>
+            <button>Developer's System Controls</button>
+            <button>Access Log & Visitor History</button>
+            <button>Disciplinary Case Notes</button>
+            <button>Teacher Dashboard</button>
+            <button>Student Progress</button>
+            <button>Pending Submissions</button>
+            <button>Research Monitoring</button>
+            <button>AI Study Assistant</button>
+            <button>Portfolio</button>
+            <button>Research Hub</button>
+            <button>Student Dashboard</button>
+            <button>Request Music</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="hero">
+
+    <div class="banner">
+        <img src="bg.png" alt="Banner">
+    </div>
 
     <div class="logo">
         <img src="logo.jpg" alt="Logo">
@@ -48,217 +358,366 @@
 
 </div>
 
-<div class="content" id="content">
-<h1 class="welcomeTitle">Welcome to Graceful Hopper</h1>
+<div id="content">
 
-<p style="color:white; padding:0 20px 20px; line-height:1.8; text-align:justify;">
+<section class="card">
 
-Welcome to the official Graceful Hopper class page. This section is designed to provide students with quick access to important announcements, reminders, attendance records, class officers, learning modules, and other useful resources. The goal of this page is to keep every student informed and organized throughout the school year.
+    <div class="cardHeader">
 
-This platform allows students to stay updated with the latest classroom activities. Teachers and class officers can post announcements, reminders about assignments, upcoming quizzes, examinations, and school events. By checking this page regularly, every student can remain informed about important deadlines and responsibilities.
+            <button class="viewMoreBtn">View More</button>
 
-The Attendance section helps students monitor their attendance records and encourages punctuality. The Cleaners section contains the classroom cleaning schedule to ensure that responsibilities are shared equally among classmates. The Officers section introduces the elected class officers and their assigned roles, making it easier for students to know whom to approach whenever assistance is needed.
-
-The Modules section serves as a storage area for learning materials, assignments, and educational resources. Students can easily review lessons and download necessary files whenever they need them. This helps make learning more convenient both inside and outside the classroom.
-
-Our objective is to create a simple, organized, and user-friendly environment where students can access all important class information in one place. Through teamwork, responsibility, and effective communication, Graceful Hopper aims to build a productive and supportive learning community.
-
-Thank you for visiting the Graceful Hopper class page. We hope this platform helps every student become more organized, responsible, and successful throughout the academic year. Continue scrolling to explore more content and features that will be added in future updates.
-
-<div class="social-container">
-
-    <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61590582906990" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-        </a>
-
-        <a href="https://www.tiktok.com" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-        </a>
-
-        <a href="https://www.instagram.com" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-        </a>
-
-        <a href="https://mail.google.com/mail/u/0/#inbox">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-        </a>
+<div id="details-modal" class="modal-overlay">
+    <div class="modal-content-box">
+        <button id="close-modal-btn" class="modal-x-btn">&times;</button>
+        <div class="modal-body-scroll-container">
+            <h3>Welcome to Graceful Hopper</h3>
+            
+            <p>Welcome to the official Graceful Hopper class page. This section is designed to provide students with quick access to important announcements, reminders, attendance records, class officers, learning modules, and other useful resources. The goal of this page is to keep every student informed and organized throughout the school year.</p>
+            
+            <p>This platform allows students to stay updated with the latest classroom activities. Teachers and class officers can post announcements, reminders about assignments, upcoming quizzes, examinations, and school events. By checking this page regularly, every student can remain informed about important deadlines and responsibilities.</p>
+            
+            <p>The Attendance section helps students monitor their attendance records and encourages punctuality. The Cleaners section contains the classroom cleaning schedule to ensure that responsibilities are shared equally among classmates. The Officers section introduces the elected class officers and their assigned roles, making it easier for students to know whom to approach whenever assistance is needed.</p>
+            
+            <p>The Modules section serves as a storage area for learning materials, assignments, and educational resources. Students can easily review lessons and download necessary files whenever they need them. This helps make learning more convenient both inside and outside the classroom.</p>
+            
+            <p>Our objective is to create a simple, organized, and user-friendly environment where students can access all important class information in one place. Through teamwork, responsibility, and effective communication, Graceful Hopper aims to build a productive and supportive learning community.</p>
+            
+            <p>Thank you for visiting the Graceful Hopper class page. We hope this platform helps every student become more organized, responsible, and successful throughout the academic year. Continue scrolling to explore more content and features that will be added in future updates.</p>
+        </div>
     </div>
 </div>
 
-</p>
-
-<div id="triangleBtn"></div>
-
-<div id="dateModal" class="dateModal">
-    <div class="dateBox">
-
-        <button id="closeModal">&times;</button>
-
-        <h3>Date & Time</h3>
-
-        <div id="liveClock"></div>
-        <div id="currentDate"></div>
-
-    </div>
-</div>
-
-<button id="openInfoModal" onclick="openInfoModal()">ⓘ</button>
-
-<div id="infoModal">
-
-    <div id="infoModalBox">
-
-        <button id="closeInfoModal" onclick="closeInfoModal()">✕</button>
-
-        <h2>More Information</h2>
-
-       <div id="infoModalContent">
-
-    <div class="infoSection">
-
-        <img src="pio.jpeg" class="infoCircle" onclick="openInfoImage(this)">
-
-        <h3>About Developer</h3>
+        <div class="line"></div>
+            <h1>Welcome to Graceful Hopper</h1>
+        </div>
 
         <p>
-        A passionate Game Programmer and Software Engineer dedicated to designing
-        and developing innovative, user-friendly, and efficient digital solutions.
-        Specializes in game development, software engineering, and application
-        design, creating interactive systems that combine functionality with
-        engaging user experiences. Committed to continuous learning,
-        problem-solving, and modern technology to build reliable, high-quality
-        software that delivers performance, creativity, and innovation.
-    </p>
+            Powered by <strong>Recording Information Application (R.I.A).</strong>
+            What is the R.I.A Application?. The (R.I.A) Application is 
+            the first‑ever combination of social media, information and record‑keeping, 
+            and game applications. It was created by one student with advanced 
+            learning in programming and software development. 
+            Its unique purpose is to help students and teachers work conveniently and 
+            efficiently: users can save and submit projects without printing hard copies, 
+            and stay organized to avoid being overwhelmed by activities.
+        </p>
+    </section>
 
-    </div>
+<div id="activeTime">Active Time: 00:00:00</div>
 
-    <hr>
-
-    <div class="infoSection">
-
-        <img src="sr.jpg" class="infoCircle" onclick="openInfoImage(this)">
-
-        <h3>Adviser Description</h3>
-
-        <p>
-        An Adviser provides guidance, support, and encouragement to help students
-        achieve their goals. Offers valuable advice, shares knowledge and
-        experience, and helps members make responsible decisions. Committed to
-        promoting teamwork, leadership, discipline, and personal growth while
-        ensuring that activities and projects are carried out successfully.
-    </p>
-
-    </div>
-
-    <hr>
-
-<div class="infoSection">
-
-    <img src="logo.jpg" class="infoCircle">
-
-    <h3>Rules & Regulations</h3>
-
-    <p>
-        <b>1. Wear the complete and proper school uniform every day.</b><br>
-        Laging magsuot ng kumpleto at tamang school uniform. Ang polo ay dapat naka-tuck in sa lahat ng oras. Ang sinumang hindi susunod ay magbabayad ng <b>₱15</b> sa Treasurer.<br><br>
-
-        <b>2. Do not be late, even if you have an excuse letter.</b><br>
-        Ugaliing pumasok nang maaga. Ang oras mula <b>1:00 PM hanggang 1:10 PM</b> ay ituturing na late. Ang mahuhuling late ay maglilinis pagkatapos ng klase kahit hindi siya naka-assign bilang cleaner.<br><br>
-
-        <b>3. Do not throw trash anywhere.</b><br>
-        Panatilihing malinis ang silid-aralan. Ang sinumang mahuhuling nagtatapon ng basura kung saan-saan ay siyang magtatapon ng basura pagkatapos ng klase. Kapag hindi ito ginawa, magbabayad siya ng <b>₱10</b> sa Treasurer.<br><br>
-
-        <b>4. Always follow the instructions of the class officers.</b><br>
-        Igalang at sundin ang mga tagubilin ng mga opisyal ng klase. Ang hindi susunod ay magbabayad ng <b>₱1</b> sa Treasurer.<br><br>
-
-        <b>5. Do not bring dangerous items to the classroom.</b><br>
-        Bawal magdala ng anumang mapanganib na bagay sa loob ng silid-aralan. Ang mahuhuli ay pagmumultahin ng <b>₱10</b> at maaaring i-refer sa Guidance Office.<br><br>
-
-        <b>6. Excuse letters must include a photocopy of a parent's valid ID with signature.</b><br>
-        Ang excuse letter ay dapat may kasamang photocopy ng valid ID ng magulang na may pirma bilang patunay ng kanilang pahintulot. Ang hindi makakasunod ay maglilinis pagkatapos ng klase at magbabayad ng <b>₱10</b> sa Treasurer.<br><br>
-
-        <b>7. Always follow the instructions of officers and teachers.</b><br>
-        Sundin ang lahat ng tagubilin ng mga opisyal at guro. Ang sinumang mahuhuling hindi sumusunod o nagsisinungaling ay magbabayad ng <b>₱20</b> sa Treasurer.<br><br>
-
-        <b>8. No vandalism inside the classroom.</b><br>
-        Bawal magsulat o magdikit ng anumang bagay sa mga dingding, mesa, upuan, o iba pang bahagi ng silid-aralan. Ang mahuhuli ay maglilinis sa loob ng isang linggo kahit hindi siya cleaner.<br><br>
-
-        <b>9. No bullying of any kind.</b><br>
-        Ipinagbabawal ang anumang uri ng pambubully, paninira, o pang-aapi sa kapwa mag-aaral. Ang mahuhuli ay maaaring pagmultahin ng <b>₱20</b> at mapatawag ang kanyang mga magulang.<br><br>
-
-        <b>10. Do not bring illegal items such as vape, marijuana, or drugs.</b><br>
-        Mahigpit na ipinagbabawal ang pagdadala ng vape, marijuana, droga, at iba pang ipinagbabawal na bagay. Ang mahuhuli ay maaaring i-refer sa Guidance Office at mapatawag ang kanyang mga magulang.<br><br>
-
-        <b>11. Do not leave the classroom without permission.</b><br>
-        Bawal lumabas ng silid-aralan nang walang pahintulot mula sa Class President o guro. Ang mahuhuli ay magbabayad ng <b>₱5</b> sa Treasurer.<br><br>
-
-        <b>12. No wearing of jewelry, caps, or non-school accessories unless permitted by the school.</b><br>
-        Bawal magsuot ng alahas (lalo na ang hikaw para sa mga lalaki), sombrero, at iba pang hindi bahagi ng school uniform habang nasa loob ng paaralan. Ang sinumang hindi susunod ay hindi papayagang pumasok sa silid-aralan hangga't hindi inaalis ang ipinagbabawal na gamit. Kapag lumabag nang higit sa dalawang beses, magbabayad ng <b>₱5</b> sa Treasurer.
-    </p>
-
+<div id="dateTimeOval">
+    <span id="dateTimeText"></span>
 </div>
 
-    <hr>
+    <section class="card adviserCard">
 
-<div class="infoSection">
+        <div class="adviserInfo">
 
-    <img src="logo.jpg" class="infoCircle">
+            <div class="cardHeader2">
+                <div class="line"></div>
+                <h1>About Developer</h1>
+            </div>
 
-    <h3>Instructions & Manuals</h3>
+            <p>
+                The creator of this website and application is a 19-year-old 
+                student with advanced knowledge and skills in programming and 
+                software development. He is currently studying at Sta. Lucia 
+                High School. Driven by passion and dedication, he aims to build 
+                a successful career as a software engineer and professional 
+                game developer.
+            </p>
 
-    <p>
-        <b>1.</b> Click the <b>ⓘ Information</b> button to view additional information, classroom rules, and developer details.<br><br>
+        </div>
 
-        <b>2.</b> Click any officer or cleaner picture to view a larger version. Press the <b>✕</b> button or click outside the image to close the preview.<br><br>
+    </section>
 
-        <b>3.</b> Click the triangle button to access other features and additional options.<br><br>
-
-        <b>4.</b> Wait for the page content to finish loading before selecting another section.<br><br>
-
-        <b>5.</b> Use the website responsibly and follow all classroom rules and school policies.<br><br>
-
-        <b>6.</b> Report any bugs, errors, or incorrect information to the class officers or the developer for immediate correction.<br><br>
-
-        <b>7.</b> Refresh the website if a page or image does not load properly.<br><br>
-
-        <b>8.</b> For the best experience, use an updated web browser and a stable internet connection.<br><br>
-
-        <b>9.</b> Do not modify, misuse, or attempt to damage any part of the website.
-    </p>
-
+<div class="seeMoreContainer">
+    <button class="seeMoreBtn">See More</button>
 </div>
+
+<div id="see-more-modal" class="modal-overlay">
+    <div class="modal-content-box profile-modal">
+        <button id="close-see-more-btn" class="modal-x-btn">&times;</button>
         
-        <div id="infoImagePopup">
+        <div class="modal-banner-header">
+            <img src="db.jpg" alt="Class Banner" class="modal-banner-img"/>
+            <div class="modal-profile-frame">
+                <img src="dp.jpg" alt="Profile Picture" class="modal-profile-img"/>
+            </div>
+        </div>
 
-    <button id="closeInfoImagePopup" onclick="closeInfoImage()">✕</button>
-
-    <div class="infoImageWrapper">
-        <img id="popupInfoImage" src="">
+        <div class="modal-body-scroll-container">
+            <h3>Developer Description</h3>
+            
+<p>The journey into software development for Christian Andrie Lumpod began at the age of 18 with a spark of curiosity. Determined to understand how software works under the hood, he took his first steps by diving into foundational languages like Python, Java, and SQL. Spending days and nights absorbing logic structures, handling data queries, and learning standard algorithms, he quickly realized that code wasn't just text on a screen it was a powerful tool to build things out of nothing.</p>
+            
+            <p>Eager to put his newly acquired knowledge into practice, Christian set out on his first real-world project: building a small, dedicated website for his school section. To bring this platform to life, he stepped up his technical stack, introducing mid-stage web technologies: HTML, CSS, and JavaScript. What started as an amateur experiment quickly evolved into a months-long journey of trial and error as he perfected layouts, managed user states, and tried to bridge the gap between a standard web platform and a native app.</p>
+            
+            <p>Everything changed at the exact start of January 2025. Christian's research teacher announced a major academic milestone: the class was required to develop a functional, purposeful prototype with a clear, impactful goal tied directly to their ICT strand. This wasn't just another class assignment; it was the ultimate test of his skills. For months, Christian battled with user interface (UI) designs, throwing out old ideas, rewriting code blocks, and constantly redesigning the app's look and feel to make it as user-friendly and responsive as possible.</p>
+            
+            <p>Through this intense trial by fire, a breakthrough happened. Christian developed a deep, intuitive understanding of project execution. He finally figured out exactly how to map out his code, which specific programming languages to deploy for different features, and the precise design strategies needed to build a polished software architecture. This hands-on research project pushed him miles ahead, granting him an advanced understanding of programming paradigms and modern practices in the software industry.</p>
+            
+            <p>Today, Christian leverages his advanced learning to build responsive web applications, secure modules, and interactive interfaces from scratch. However, the web is just his starting ground. Christian's ultimate career goal is to transition his architectural logic, problem-solving skills, and advanced software strategies into the gaming industry. Driven by a passion for interactivity, physics engine behaviors, and immersive user experiences, he is actively programming his path toward becoming a premier Game Developer and Software Engineer.</p>
+        </div>
     </div>
-
 </div>
 
+<div class="weather-badge" id="status-badge">
+  <span id="weather-loc">Checking Connection...</span>
+  <span id="weather-temp">--°C</span>
+</div>
+    
+    <section class="card officersCard">
+
+    <div class="cardHeader3">
+        <div class="line"></div>
+        <h1>Adviser</h1>
     </div>
 
-</div>
-
-    </div>
-
-</div>
-
-<div id="welcomeModal" class="welcome-modal">
-  <div class="welcome-content">
-    <button class="close-btn" onclick="closeWelcomeModal()">&times;</button>
-
-    <img src="logo.jpg" alt="Profile" class="profile-circle">
-
-    <h2>Welcome!</h2>
-<p class="welcome-text">
-    <span class="line1">Adviser: Jeffrey Macabare</span><br>
-    <span class="line2">Created by Christian Andrie Lumpod</span>
+<p>
+    Our classroom adviser is a tech-forward educator who leverages his deep 
+    expertise in artificial intelligence, software programming, and modern 
+    technology to drive student innovation and success. Possessing a highly 
+    versatile skill set, he serves as a multi-talented mentor capable of guiding 
+    students across a wide range of academic, technical, and practical disciplines.
 </p>
+
+</section>
+
+<button class="otherInfoBtn" onclick="showOtherInfo()">
+    Other Info
+</button>
+
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-container">
+            
+            <div class="modal-header">
+                <div class="header-left">
+                    <img class="modal-profile-pic" src="AD.jpg" alt="Adviser Profile">
+                    <button class="modal-close-icon-btn" onclick="closeOtherInfo()" aria-label="Close">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-content">
+                <h3 class="modal-title">Classroom Adviser Profile</h3>
+                
+                <div class="adviser-description">
+                    <p class="highlight-text">
+                        Our classroom adviser is a tech-forward educator who leverages his deep expertise in artificial intelligence, software programming, and modern technology to drive student innovation and success. Possessing a highly versatile skill set, he serves as a multi-talented mentor capable of guiding students across a wide range of academic, technical, and practical disciplines.
+                    </p>
+                    
+                    <h4>The Role of an Adviser</h4>
+                    <p>
+                        An Adviser provides crucial guidance, support, and encouragement to help students achieve their goals. By offering valuable advice, sharing knowledge and experience, and helping members make responsible decisions, they establish a secure framework for excellence. He is deeply committed to promoting teamwork, leadership, discipline, and personal growth while ensuring that academic activities and innovative projects are carried out successfully.
+                    </p>
+
+                    <h4>Tech-Forward Mentorship & Innovation</h4>
+                    <p>
+                        In today's fast-evolving landscape, having an adviser skilled in artificial intelligence and systems programming changes the game. This foundational engineering mindset helps students bridge the gap between classroom theory and modern technological application. Whether directing system development, design aesthetics, or logical problem-solving, his leadership pushes teams to expand their technical horizons and think critically.
+                    </p>
+
+                    <h4>Academic & Practical Development</h4>
+                    <p>
+                        Beyond traditional academic guidelines, this versatile mentorship focuses heavily on real-world capabilities. By cultivating clear project timelines, balancing collaborative inputs, and setting top-tier professional standards, students are trained to communicate ideas gracefully and build resilient projects. The ultimate mission is to foster self-reliant leaders prepared to handle future academic and technical milestones flawlessly.
+                    </p>
+                </div>
+                
+                <div class="social-section">
+                    <a href="https://www.facebook.com/macabarelpt" target="_blank" class="facebook-link" rel="noopener noreferrer">
+                        <svg class="fb-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        <span>Connect with Adviser</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<div id="musicPlayer">
+    <button id="prevBtn">⏮</button>
+    <button id="playBtn">▶</button>
+    <button id="nextBtn">⏭</button>
+    <div id="songName">music1.mp3</div>
+    <audio id="bgMusic"></audio>
 </div>
+
+<button class="ai-trigger-btn" id="openModalBtn">
+    <img src="ai.jpg" alt="AI Guide" class="ai-btn-img">
+</button>
+
+<div class="ai-modal hidden" id="aiModal">
+    <div class="modal-header">
+        <div class="header-title">
+            <div class="ai-status-dot"></div>
+            <span>AI Guide</span>
+            <button id="view-more-btn" onclick="toggleSteps()">View More</button>
+        </div>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+        <p class="ai-greeting">Hello im George The Super AI! Here are your instructions for this website:</p>
+        
+        <ul class="instruction-list">
+    <li>
+        <span class="step-num">1</span>
+        <p>Log in to your student account via the main dashboard to access your personalized academic portal.</p>
+    </li>
+    <li>
+        <span class="step-num">2</span>
+        <p>Select your current year level or course category to sync the relevant site content.</p>
+    </li>
+    <li>
+        <span class="step-num">3</span>
+        <p>Browse the navigation sidebar to locate your active subjects and semester modules.</p>
+    </li>
+    <li>
+        <span class="step-num">4</span>
+        <p>Open the Lecture Slide viewer to scroll through interactive presentations and course materials.</p>
+    </li>
+    <li>
+        <span class="step-num">5</span>
+        <p>Click on the designated media slots to view high-resolution diagrams and academic imagery.</p>
+    </li>
+    <li>
+        <span class="step-num">6</span>
+        <p>Use the Submission Portal to upload completed homework directly to your teacher's folder.</p>
+    </li>
+    <li>
+        <span class="step-num">7</span>
+        <p>Check the site announcements footer for real-time updates on school events and maintenance.</p>
+    </li>
+</ul>
+    </div>
+</div>
+
+<div id="musicWarning" class="musicWarning">
+    <div class="warningBox">
+        <h2>⚠ Music Notice</h2>
+
+        <p>
+            This background music has not yet been fully verified or registered to its owner.
+            By continuing, you acknowledge that the music is used for demonstration purposes only.
+        </p>
+
+        <button id="continueMusic">Continue</button>
+        <button id="cancelMusic">Cancel</button>
+    </div>
+</div>
+
+<section class="card missionCard">
+
+    <div class="cardHeader2">
+        <div class="line"></div>
+        <h1>News</h1>
+    </div>
+
+    <p>
+        Our mission is to provide students and teachers with a modern,
+        reliable, and efficient platform for managing information,
+        announcements, records, and school activities. Through
+        innovation and technology, R.I.A aims to make learning
+        more organized, accessible, and productive.
+    </p>
+
+</section>
+
+
+<section class="card visionCard">
+
+    <div class="cardHeader2">
+        <div class="line"></div>
+        <h1>Rules & Regulations</h1>
+    </div>
+
+    <p>
+        Our vision is to become an innovative educational platform
+        that empowers students and educators through digital
+        transformation. We strive to create a smarter, more connected,
+        and technology-driven learning environment.
+    </p>
+
+</section>
+
+<section class="card riaCard">
+
+    <div class="cardHeader2">
+        <div class="line"></div>
+        <h1>Follow Us</h1>
+    </div>
+
+    <p>
+        R.I.A combines social interaction, announcements, attendance,
+        reminders, and record management into one application,
+        providing a faster, smarter, and more convenient experience
+        for both students and teachers.
+    </p>
+
+</section>
+
+</div>
+
+<div id="notificationWrapper">
+
+    <button id="notificationBtn">
+        🔔
+        <span id="notificationCount">3</span>
+    </button>
+
+    <div id="notificationPanel">
+
+        <h3>Notifications</h3>
+
+        <div id="notificationList">
+
+            <div class="notificationItem" onclick="openNotification(
+            'R.I.A X Section Web',
+            'Get ready for the next generation of R.I.A! We are officially launching a massive new evolution, unleashing our first-ever groundbreaking website integration. This deployment marks an essential step forward in creating a seamless interface environment across deployment channels.\n\nThis is a historic milestone for the software platform, and our engineering roadmap shows we are just getting started. A wave of powerful new features, cutting-edge user experience enhancements, and adaptive module components is scheduled to drop very soon to elevate overall user productivity.\n\nThat concludes our initial brief for this deployment cycle. Thank you for being a vital part of this technical journey, and we hope you have an absolute blast exploring the new system capabilities built into the website interface!'
+            )">
+                <b>Upcoming Update (Latest UI)</b>
+                <p>Click to view system patch notes...</p>
+            </div>
+
+            <div class="notificationItem" onclick="openNotification(
+            'System Architecture Initialization',
+            'We are pleased to confirm that all structural logs, backend database indices, and core application modules have been successfully generated and compiled for runtime operations. This fully optimized operational state was engineered entirely by the Super AI George framework, a highly specialized artificial intelligence engine operating as the technical foundation for the R.I.A ecosystem.\n\nSuper AI George dynamically manages real-time optimization vectors, low-level component rendering, and interface adaptability constraints to guarantee optimal desktop performance. By utilizing predictive processing layout systems, this specialized AI subsystem drastically minimizes standard latency while balancing systemic calculations running concurrently in the background.\n\nUsers can expect continuous architectural stability and seamless performance thresholds under this permanently managed framework. Future upgrades orchestrated by the Super AI George engine will continue to introduce automated refinements to the system layout configuration without requiring hard system reboots.'
+            )">
+                <b>System Core Generated</b>
+                <p>Engineered by Super AI George...</p>
+            </div>
+
+            <div class="notificationItem" onclick="openNotification(
+            'Data Protection & Privacy Directive',
+            'Official Security Protocol Notice: All informational logs, individual user data records, operational configurations, and cryptographic parameters handled within this interface are strictly classified under maximum confidentiality protocols. Unauthorized duplication or redistribution of these assets is heavily monitored.\n\nIn direct compliance with established data integrity directives, system operators are strictly prohibited from sharing, exporting, or disclosing internal system parameters to external parties or third-party unauthorized networks. Maintaining the absolute confidentiality of these processing credentials is vital to protecting the runtime environment from outside vulnerabilities.\n\nFailure to adhere to these privacy policies may compromise the integrity of the local application structure and expose sensitive operational systems to modern security threats. Please ensure all access terminals are locked down securely when leaving your current workstation session unattended.'
+            )">
+                <b>Privacy Notice</b>
+                <p>Information sharing restrictions...</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="notificationModal">
+
+    <div id="notificationModalBox">
+
+        <button id="closeNotificationModal">✕</button>
+
+        <h2 id="modalNotificationTitle"></h2>
+
+        <p id="modalNotificationText"></p>
+
+    </div>
 
 </div>
 
