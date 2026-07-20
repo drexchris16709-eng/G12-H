@@ -541,7 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.querySelector(".adviserCard");
     if (card) {
         const video = document.createElement("video");
-        video.src = "SD1.mp4";
+        video.src = ".mp4";
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
