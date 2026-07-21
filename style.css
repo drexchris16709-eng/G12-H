@@ -2291,7 +2291,7 @@ animation:rightToLeft 8s linear infinite;
 
             rgba(0,0,0,0.55)
         ),
-        url("bg.png");
+        url("BGF.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
