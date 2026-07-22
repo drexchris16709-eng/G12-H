@@ -1028,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
       // ⚠️ Change this to `true` when your server comes back online
-      const isServerOnline = false
+      const isServerOnline = "true";
 
       if (isServerOnline) {
         spinner.remove();
