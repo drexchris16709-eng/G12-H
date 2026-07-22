@@ -11,6 +11,87 @@
 </head>
 <body>
 
+  <button class="ria-sys-search-btn" id="riaSysSearchBtn" type="button" aria-label="Open Search">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+
+  <div class="ria-sys-backdrop" id="riaSysModalBackdrop">
+    <div class="ria-sys-search-modal" id="riaSysSearchModal">
+      
+      <div class="ria-sys-modal-header">
+        <svg class="ria-sys-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="riaSysSearchInput" placeholder="Search a student..." autocomplete="off">
+        <button class="ria-sys-close-btn" id="riaSysCloseBtn" type="button" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="ria-sys-modal-body">
+        <div class="ria-sys-label" id="riaSysSectionLabel"></div>
+        <div class="ria-sys-suggestions-grid" id="riaSysSuggestionsContainer"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ria-pro-backdrop" id="riaProModalBackdrop">
+    <div class="ria-pro-modal-box">
+      
+      <div class="ria-pro-header">
+        <div class="ria-pro-badge">R.I.A PRO</div>
+        <h2>Unlock Full Access</h2>
+        <p>Get live background customizers, real-time sync, and exclusive 3D features.</p>
+        <button class="ria-pro-close-btn" id="riaProCloseBtn" type="button" aria-label="Close Pro modal">&times;</button>
+      </div>
+
+<div class="ria-pro-pricing-card">
+  <div class="ria-pro-price-amount">₱199 <span>/ month</span></div>
+  <ul class="ria-pro-features-list">
+    <li>✓ Changeable BG into Live Video in Student Dashboard</li>
+    <li>✓ Real-Time Saving & Data Sync</li>
+    <li>✓ Access to New & Beta Features</li>
+    <li>✓ Full Editing Capabilities in Any Section</li>
+    <li>✓ Dedicated Personal Section</li>
+    <li>✓ Emojis, 3D Avatars, Custom Frames, Banners & Calling Cards</li>
+    <li>✓ Unique Profile Badges</li>
+    <li>✓ Game Mode: Advanced & Faster System Algorithm</li>
+    <li>✓ Video 3D BG in the R.I.A App Dashboard Section</li>
+    <li>✓ Assigned Personal Moderator & Admin for Your Account</li>
+    <li>✓ Cool Effects & Features Exclusive to Pro Mode</li>
+    <li>✓ Changeable Profile Picture to live 3D Model or Animated</li>
+    <li>✓ Advanced, Faster Super AI: STX AI - Systematic Trinomax Xeterox AI</li>
+    <li>✓ Advanced & Powerful Security System</li>
+  </ul>
+</div>
+
+      <div class="ria-pro-payment-section">
+        <label class="ria-pro-payment-label">Select Payment Method</label>
+        <div class="ria-pro-payment-options">
+          <label class="ria-pro-payment-option ria-pro-option-active">
+            <input type="radio" name="riaProPaymentMethod" value="gcash" checked>
+            <span>GCash</span>
+          </label>
+          <label class="ria-pro-payment-option">
+            <input type="radio" name="riaProPaymentMethod" value="maya">
+            <span>Maya</span>
+          </label>
+          <label class="ria-pro-payment-option">
+            <input type="radio" name="riaProPaymentMethod" value="card">
+            <span>Card</span>
+          </label>
+        </div>
+      </div>
+
+      <button class="ria-pro-pay-btn" id="riaProPayBtn" type="button">Pay ₱199 & Activate Pro</button>
+      <div class="ria-pro-status-msg" id="riaProStatusMsg"></div>
+
+    </div>
+  </div>
+
 <div class="wcm-modal-overlay" id="wcmWelcomeModalUnique">
     <div class="wcm-modal-card">
         
@@ -670,7 +751,7 @@
             'R.I.A Integrated Section Web ',
             'Get ready for the next generation of R.I.A! We are officially launching a massive new evolution, unleashing our first-ever groundbreaking website integration. This deployment marks an essential step forward in creating a seamless interface environment across deployment channels.\n\nThis is a historic milestone for the software platform, and our engineering roadmap shows we are just getting started. A wave of powerful new features, cutting-edge user experience enhancements, and adaptive module components is scheduled to drop very soon to elevate overall user productivity.\n\nThat concludes our initial brief for this deployment cycle. Thank you for being a vital part of this technical journey, and we hope you have an absolute blast exploring the new system capabilities built into the website interface!'
             )">
-                <b>Upcoming Update (Latest UI)</b>
+                <b>Upcoming UI Update & Web Integration</b>
                 <p>Click to view system patch notes...</p>
             </div>
 
@@ -692,7 +773,7 @@
 
          <div class="notificationItem" onclick="openNotification(
 'Hardware & Thermal Safety Advisory',
-'System Operational Notice: Prolonged sessions within this active application environment utilize high-frequency rendering pipelines and background computational tasks. Extended continuous usage may lead to elevated CPU/GPU utilization, potentially causing your local hardware device to experience thermal throttle conditions or significant heat accumulation.\n\nTo prevent thermal degradation and preserve battery integrity, users are advised to take periodic breaks, avoid running concurrent heavy resource processes, and monitor internal system temperatures. If your hardware device becomes uncomfortably warm or begins experiencing performance stutters, please terminate active web sessions immediately to allow proper passive cooling cycles.'
+'System Operational Notice: Prolonged sessions within this active system environment utilize high-frequency rendering pipelines and background computational tasks. Extended continuous usage may lead to elevated CPU/GPU utilization, potentially causing your local hardware device to experience thermal throttle conditions or significant heat accumulation.\n\nTo prevent thermal degradation and preserve battery integrity, users are advised to take periodic breaks, avoid running concurrent heavy resource processes, and monitor internal system temperatures. If your hardware device becomes uncomfortably warm or begins experiencing performance stutters, please terminate active web sessions immediately to allow proper passive cooling cycles.'
 )">
     <b>Hardware & Thermal Advisory</b>
     <p>Device overheating prevention details...</p>
