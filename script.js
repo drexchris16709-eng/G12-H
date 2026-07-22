@@ -587,3 +587,223 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const searchDataset = [
+    { name: "Christian Andrie B. Lumpod", file: "christian-lumpod.html" },
+    { name: "Armil John P. Lobendino",    file: "armil-lobendino.html" },
+    { name: "Kyle Jassem T. Bandalan",     file: "kyle-bandalan.html" },
+    { name: "Ryle Kristof S. Marquez",     file: "ryle-marquez.html" },
+    { name: "Christian Paul A. Pineda",   file: "christian-pineda.html" },
+    { name: "John Vincent T. Pretal",     file: "john-pretal.html" },
+    { name: "Eric John A. Milgar",        file: "eric-milgar.html" },
+    { name: "Clifford Jay D. Salino",     file: "clifford-salino.html" }
+  ];
+
+  const defaultSuggestions = [
+    { name: "Students List",       file: "students-list.html" },
+    { name: "R.I.A Pro (Premium Mode)",            file: "pro-mode" },
+    { name: "Teachers Dashboard",  file: "teachers-dashboard.html" },
+    { name: "All Records (Graceful Hopper)",         file: "all-records.html" }
+  ];
+
+  const riaSysSearchBtn = document.getElementById('riaSysSearchBtn');
+  const riaSysModalBackdrop = document.getElementById('riaSysModalBackdrop');
+  const riaSysCloseBtn = document.getElementById('riaSysCloseBtn');
+  const riaSysSearchInput = document.getElementById('riaSysSearchInput');
+  const riaSysSuggestionsContainer = document.getElementById('riaSysSuggestionsContainer');
+  const riaSysSectionLabel = document.getElementById('riaSysSectionLabel');
+
+  const riaProModalBackdrop = document.getElementById('riaProModalBackdrop');
+  const riaProCloseBtn = document.getElementById('riaProCloseBtn');
+  const riaProPayBtn = document.getElementById('riaProPayBtn');
+  const riaProStatusMsg = document.getElementById('riaProStatusMsg');
+  const riaProPaymentOptions = document.querySelectorAll('.ria-pro-payment-option');
+
+  function lockScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+  }
+
+  function unlockScroll() {
+    document.body.style.overflow = '';
+    document.body.style.touchAction = '';
+  }
+
+  function openSearchModal() {
+    if (riaSysModalBackdrop) {
+      riaSysModalBackdrop.classList.add('ria-sys-active');
+      lockScroll();
+      renderDefaultSuggestions();
+      setTimeout(() => { riaSysSearchInput.focus(); }, 50);
+    }
+  }
+
+  function closeSearchModal() {
+    if (riaSysModalBackdrop) {
+      riaSysModalBackdrop.classList.remove('ria-sys-active');
+      riaSysSearchInput.value = '';
+      unlockScroll();
+    }
+  }
+
+  function renderDefaultSuggestions() {
+    riaSysSectionLabel.textContent = "Suggestions by Super AI";
+    riaSysSuggestionsContainer.innerHTML = '';
+    defaultSuggestions.slice(0, 4).forEach(item => {
+      riaSysSuggestionsContainer.appendChild(createCard(item));
+    });
+  }
+
+  function createCard(item) {
+    const card = document.createElement('div');
+    card.className = 'ria-sys-card';
+    card.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span>${item.name}</span>
+    `;
+
+    card.addEventListener('click', () => {
+      if (item.file === "pro-mode" || item.name === "R.I.A Pro") {
+        closeSearchModal();
+        openRiaProModal();
+      } else {
+        riaSysSearchInput.value = item.name;
+        navigateToFile(item);
+      }
+    });
+
+    return card;
+  }
+
+  function navigateToFile(item) {
+    const targetUrl = item.file;
+
+    fetch(targetUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('File missing');
+        return response.text();
+      })
+      .then(htmlContent => {
+        if (htmlContent.trim() === '') {
+          showFileNotFound();
+        } else {
+          window.location.href = targetUrl;
+        }
+      })
+      .catch(() => {
+        showFileNotFound();
+      });
+  }
+
+  function showFileNotFound() {
+    riaSysSectionLabel.textContent = "Error";
+    riaSysSuggestionsContainer.innerHTML = `
+      <div style="grid-column: 1 / -1; padding: 14px; text-align: center; color: #ff5555; background: #2a1515; border-radius: 8px; border: 1px solid #552222; font-size: 0.9rem;">
+        ⚠️ File not found
+      </div>
+    `;
+  }
+
+  function handleSearch(query) {
+    const cleanQuery = query.trim().toLowerCase();
+    if (cleanQuery === '') {
+      renderDefaultSuggestions();
+      return;
+    }
+
+    const matches = searchDataset.filter(item => item.name.toLowerCase().includes(cleanQuery));
+    riaSysSectionLabel.textContent = matches.length > 0 ? "Search Results" : "No results found";
+    riaSysSuggestionsContainer.innerHTML = '';
+    matches.forEach(item => {
+      riaSysSuggestionsContainer.appendChild(createCard(item));
+    });
+  }
+
+  window.openRiaProModal = function() {
+    if (riaProModalBackdrop) {
+      riaProModalBackdrop.classList.add('ria-pro-active');
+      lockScroll();
+    }
+  };
+
+  window.closeRiaProModal = function() {
+    if (riaProModalBackdrop) {
+      riaProModalBackdrop.classList.remove('ria-pro-active');
+      if (riaProStatusMsg) riaProStatusMsg.textContent = '';
+      unlockScroll();
+    }
+  };
+
+  riaProPaymentOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      riaProPaymentOptions.forEach(opt => opt.classList.remove('ria-pro-option-active'));
+      option.classList.add('ria-pro-option-active');
+      const radioInput = option.querySelector('input[type="radio"]');
+      if (radioInput) radioInput.checked = true;
+    });
+  });
+
+  if (riaProPayBtn) {
+    riaProPayBtn.addEventListener('click', () => {
+      riaProPayBtn.disabled = true;
+      riaProPayBtn.textContent = 'Processing...';
+      setTimeout(() => {
+        localStorage.setItem('ria_pro_user', 'true');
+        riaProStatusMsg.style.color = '#55ff55';
+        riaProStatusMsg.textContent = '🎉 Payment Successful! R.I.A Pro Activated.';
+        setTimeout(() => {
+          closeRiaProModal();
+          riaProPayBtn.disabled = false;
+          riaProPayBtn.textContent = 'Pay ₱199 & Activate Pro';
+        }, 1500);
+      }, 2000);
+    });
+  }
+
+  if (riaSysSearchBtn) riaSysSearchBtn.addEventListener('click', openSearchModal);
+  if (riaSysCloseBtn) riaSysCloseBtn.addEventListener('click', closeSearchModal);
+  if (riaProCloseBtn) riaProCloseBtn.addEventListener('click', closeRiaProModal);
+  if (riaSysModalBackdrop) {
+    riaSysModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === riaSysModalBackdrop) closeSearchModal();
+    });
+  }
+
+  if (riaProModalBackdrop) {
+    riaProModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === riaProModalBackdrop) closeRiaProModal();
+    });
+  }
+
+  if (riaSysSearchInput) {
+    riaSysSearchInput.addEventListener('input', (e) => handleSearch(e.target.value));
+    riaSysSearchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        
+        const cleanQuery = riaSysSearchInput.value.trim().toLowerCase();
+        const match = searchDataset.find(item => item.name.toLowerCase().includes(cleanQuery));
+        if (match) {
+          e.preventDefault();
+          navigateToFile(match);
+        } else if (cleanQuery !== '') {
+          e.preventDefault();
+          showFileNotFound();
+        }
+      } else if (e.key === 'Escape' && riaSysModalBackdrop.classList.contains('ria-sys-active')) {
+        closeSearchModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && riaProModalBackdrop && riaProModalBackdrop.classList.contains('ria-pro-active')) {
+      closeRiaProModal();
+    }
+  });
+
+});
