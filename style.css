@@ -2449,11 +2449,6 @@ animation:rightToLeft 8s linear infinite;
     border-radius: 50%;
     display: block;
 }
-
-.gh-profile-pic-container:hover {
-    transform: scale(1.05);
-}
-
     .ria-sys-search-btn {
       position: fixed !important;
       top: 620px !important;
