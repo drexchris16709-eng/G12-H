@@ -807,3 +807,74 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+document.body.appendChild(overlay);
+
+  const btn = document.getElementById("maintenance-retry-btn");
+  const btnText = document.getElementById("maintenance-btn-text");
+  const iconWrap = document.getElementById("maintenance-icon-wrap");
+  const icon = document.getElementById("maintenance-icon");
+  const title = document.getElementById("maintenance-title");
+  const desc = document.getElementById("maintenance-desc");
+  const badge = document.getElementById("maintenance-badge");
+
+  btn.addEventListener("click", function () {
+    icon.remove();
+    const spinner = document.createElement("div");
+    spinner.className = "maintenance-spinner";
+    iconWrap.appendChild(spinner);
+
+    btnText.textContent = "Checking Server...";
+    btn.style.opacity = "0.7";
+    btn.disabled = true;
+
+    setTimeout(() => {
+      // ⚠️ Change this to `true` when your server comes back online
+      const isServerOnline = "true"
+
+      if (isServerOnline) {
+        spinner.remove();
+        iconWrap.appendChild(icon);
+        iconWrap.style.background = "#dcfce7";
+
+        const checkBadge = document.createElement("div");
+        checkBadge.className = "maintenance-check-badge";
+        checkBadge.innerHTML = `
+          <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        `;
+        iconWrap.appendChild(checkBadge);
+
+        title.textContent = "Connection Restored";
+        desc.textContent = "You are now back to the server.";
+        
+        badge.style.background = "#dcfce7";
+        badge.style.color = "#166534";
+        badge.innerHTML = `<span style="width:8px;height:8px;background:#16a34a;border-radius:50%;display:inline-block;"></span> Status: Online`;
+
+        btn.style.background = "#16a34a";
+        btn.style.opacity = "1";
+        btn.innerHTML = `
+          <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Connected</span>
+        `;
+
+        setTimeout(() => {
+          overlay.style.opacity = "0";
+          setTimeout(() => overlay.remove(), 400);
+        }, 1500);
+
+      } else {
+        spinner.remove();
+        iconWrap.appendChild(icon);
+        btnText.textContent = "Still in Maintenance — Try Again";
+        btn.style.opacity = "1";
+        btn.disabled = false;
+      }
+    }, 1500);
+  });
+})();
+
