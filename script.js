@@ -759,7 +759,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           closeRiaProModal();
           riaProPayBtn.disabled = false;
-          riaProPayBtn.textContent = 'Pay ₱199 & Activate Pro';
+          riaProPayBtn.textContent = 'Pay ₱99 & Activate Pro';
         }, 1500);
       }, 2000);
     });
