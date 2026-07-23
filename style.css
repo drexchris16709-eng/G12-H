@@ -2253,6 +2253,13 @@ animation:rightToLeft 8s linear infinite;
     color: #fff;
 }
 
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
 #notificationWrapper{
     position:fixed;
     right:25px;
