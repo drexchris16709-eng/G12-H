@@ -1,13 +1,33 @@
-function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("active");
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("open");
 }
 
 function toggleDropdown(index){
     const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns[index].classList.toggle("active");
+    const mainBtns = document.querySelectorAll(".mainBtn");
+
+    dropdowns.forEach((drop, i) => {
+        if(i === index){
+            const isOpen = drop.classList.toggle("active");
+            mainBtns[i].classList.toggle("active-dropdown", isOpen);
+        } else {
+            drop.classList.remove("active");
+            mainBtns[i].classList.remove("active-dropdown");
+        }
+    });
 }
 
-const sidebar = document.getElementById("sidebar");
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function nextSlide() {
+    slides[currentSlide].classList.remove("active-slide");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active-slide");
+}
+
+setInterval(nextSlide, 4000);
 
 let startY = 0;
 let scrollTop = 0;
@@ -541,7 +561,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.querySelector(".adviserCard");
     if (card) {
         const video = document.createElement("video");
-        video.src = ".mp4";
+        video.src = "D.mp4";
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
@@ -590,16 +610,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const searchDataset = [
-    { name: "Christian Andrie B. Lumpod", file: "christian-lumpod.html" },
-    { name: "Armil John P. Lobendino",    file: "armil-lobendino.html" },
-    { name: "Kyle Jassem T. Bandalan",     file: "kyle-bandalan.html" },
-    { name: "Ryle Kristof S. Marquez",     file: "ryle-marquez.html" },
-    { name: "Christian Paul A. Pineda",   file: "christian-pineda.html" },
-    { name: "John Vincent T. Pretal",     file: "john-pretal.html" },
-    { name: "Eric John A. Milgar",        file: "eric-milgar.html" },
-    { name: "Clifford Jay D. Salino",     file: "clifford-salino.html" }
-  ];
+const searchDataset = [
+    { name: "1. Alcantara, Sharid Vinz Valenciano", file: "sharid-alcantara.html" },
+    { name: "2. Aleluya, Jay Lord Cabuello", file: "jay-lord-aleluya.html" },
+    { name: "3. Almonte, Marc Gabrielle Docil", file: "marc-gabrielle-almonte.html" },
+    { name: "4. Amoroso, Joseff Cristoffer Muhi", file: "joseff-cristoffer-amoroso.html" },
+    { name: "5. Argawanon, Jan Rhain Mendoza", file: "jan-rhain-argawanon.html" },
+    { name: "6. Ayap, Amber Reign Alcaraz", file: "amber-reign-ayap.html" },
+    { name: "7. Ayoso, Edrhian Villas", file: "edrhian-ayoso.html" },
+    { name: "8. Bandalan, Kyle Jassem Tormo", file: "kyle-bandalan.html" },
+    { name: "9. Borja, Franc Jarod Felix", file: "franc-jarod-felix-borja.html" },
+    { name: "10. Cangayao, Dos Eugene Marcus Gasque", file: "dos-eugene-marcus-cangayao.html" },
+    { name: "11. Dela Rosa, Franze Deo Juanillo", file: "franze-deo-dela-rosa.html" },
+    { name: "12. Felisilda, Carl John Zapanta", file: "carl-john-felisilda.html" },
+    { name: "13. Francisco, John Lester Arcipe", file: "john-lester-francisco.html" },
+    { name: "14. Jarabe, Lebron Allen Medura", file: "lebron-allen-jarabe.html" },
+    { name: "15. Juance, John Mark Acenas", file: "john-mark-juance.html" },
+    { name: "16. Lobendino, Armil John Pielago", file: "armil-lobendino.html" },
+    { name: "17. Lumpod, Christian Andrie Basañez", file: "christian-lumpod.html" },
+    { name: "18. Marquez, Ryle Kristof Serrano", file: "ryle-marquez.html" },
+    { name: "19. Milgar, Eric John Arcipe", file: "eric-milgar.html" },
+    { name: "20. Olanolan, Christopher Johann Dador", file: "christopher-johann-olanolan.html" },
+    { name: "21. Pineda, Christian Paul Acosta", file: "christian-pineda.html" },
+    { name: "22. Pretal, John Vincent Ticar", file: "john-pretal.html" },
+    { name: "23. Salino, Clifford Jay Domo", file: "clifford-salino.html" },
+    { name: "24. Santillan, John Hildo Panilaga", file: "john-hildo-santillan.html" },
+    { name: "25. Sara, Rhino Namoco", file: "rhino-sara.html" },
+    { name: "26. Servo, Kervin Kyle Dela Cruz", file: "kervin-kyle-servo.html" },
+
+    { name: "1. Alcanse, Rochel Ann Mae Suganog", file: "rochel-ann-mae-alcanse.html" },
+    { name: "2. Amistoso, Airish Suelo", file: "airish-amistoso.html" },
+    { name: "3. Badong, Lorraine Andrea Aquino", file: "lorraine-andrea-badong.html" },
+    { name: "4. Barrios, Danica Gadaingan", file: "danica-barrios.html" },
+    { name: "5. Basis, Audrey Bebita", file: "audrey-basis.html" },
+    { name: "6. Causing, Jean Louisse Cincollagas", file: "jean-louisse-causing.html" }
+];
 
   const defaultSuggestions = [
     { name: "Students List",       file: "students-list.html" },
@@ -807,3 +852,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+function toggleSteps() {
+    const modal = document.getElementById("info-modal");
+    if (modal) {
+        if (modal.style.display === "flex") {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+        } else {
+            const scrollY = window.scrollY;
+            document.body.dataset.scrollY = scrollY;
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = "100%";
+            document.body.style.overflow = "hidden";
+            
+            modal.style.display = "flex";
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("info-modal");
+    if (modal) {
+        modal.style.display = "none";
+        const scrollY = document.body.dataset.scrollY || 0;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10));
+    }
+}
+
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("info-modal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
