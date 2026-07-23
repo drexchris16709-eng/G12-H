@@ -49,22 +49,24 @@
       </div>
 
 <div class="ria-pro-pricing-card">
-  <div class="ria-pro-price-amount">₱49.99<span>/ month</span></div>
+  <div class="ria-pro-price-amount">₱49.99 <span>/ month</span></div>
   <ul class="ria-pro-features-list">
-    <li>✓ Changeable BG into Live Video in Student Dashboard</li>
-    <li>✓ Real-Time Saving & Data Sync</li>
-    <li>✓ Access to New & Beta Features</li>
-    <li>✓ Full Editing Capabilities in Any Section</li>
-    <li>✓ Dedicated Personal Section</li>
-    <li>✓ Emojis, 3D Avatars, Custom Frames, Banners & Calling Cards</li>
-    <li>✓ Unique Profile Badges</li>
-    <li>✓ Game Mode: Advanced & Faster System Algorithm</li>
-    <li>✓ Video 3D BG in the R.I.A App Dashboard Section</li>
-    <li>✓ Assigned Personal Moderator & Admin for Your Account</li>
-    <li>✓ Cool Effects & Features Exclusive to Pro Mode</li>
-    <li>✓ Changeable Profile Picture to live 3D Model or Animated</li>
-    <li>✓ Advanced, Faster Super AI: STX AI - Systematic Trinomax Xeterox AI</li>
-    <li>✓ Advanced & Powerful Security System</li>
+    <li>✓ Changeable BG into Live Video in Student Dashboard (Website)</li>
+    <li>✓ Real-Time Saving & Data Sync (All Sectors)</li>
+    <li>✓ Access to New & Beta Features (R.I.A App)</li>
+    <li>✓ Access to a limited feature called the Special User Section</li>
+    <li>✓ You can have a personal section in any collaboration of (R.I.A)</li>
+    <li>✓ Emojis, 3D Avatars, Custom Frames, Banners & Calling Cards (R.I.A App)</li>
+    <li>✓ Unique Profile Badges (R.I.A App)</li>
+    <li>✓ Game Mode: Advanced & Faster System Algorithm (All Sectors)</li>
+    <li>✓ Assigned Personal Moderator & Admin for Your Account (Specialized)</li>
+    <li>✓ Changeable video background in the (R.I.A App) Dashboard Section</li>
+    <li>✓ Cool Effects & Features Exclusive to Pro Mode (All Sectors)</li>
+    <li>✓ Changeable Profile Picture to live 3D Model or Animated (R.I.A App)</li>
+    <li>✓ Advanced, Faster Super AI: STX AI (Systematic Trinomax Xeterox) AI</li>
+    <li>✓ Advanced & Powerful Security System (All Sectors)</li>
+    <li>✓ Use passkey to login instead of password</li>
+    <li>✓ Switch mode from formal to professional at anytime (Website to App)</li>
   </ul>
 </div>
 
@@ -77,7 +79,7 @@
           </label>
           <label class="ria-pro-payment-option">
             <input type="radio" name="riaProPaymentMethod" value="maya">
-            <span>Cash on-hand</span></span>
+            <span>Cash On-hand</span>
           </label>
           <label class="ria-pro-payment-option">
             <input type="radio" name="riaProPaymentMethod" value="card">
@@ -86,7 +88,7 @@
         </div>
       </div>
 
-      <button class="ria-pro-pay-btn" id="riaProPayBtn" type="button">Pay ₱99 & Activate Pro</button>
+      <button class="ria-pro-pay-btn" id="riaProPayBtn" type="button">Pay ₱49.99 & Activate Pro</button>
       <div class="ria-pro-status-msg" id="riaProStatusMsg"></div>
 
     </div>
@@ -97,7 +99,7 @@
         
         <div class="wcm-video-container">
             <video autoplay loop muted playsinline>
-                <source src=".mp4" type="video/mp4">
+                <source src="b.mp4" type="video/mp4">
             </video>
             <div class="wcm-video-overlay"></div>
         </div>
@@ -120,7 +122,7 @@
 
 <div id="topBar">
 
-    <button id="menuBtn" onclick="toggleMenu()">☰</button>
+<button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
 
     <div id="title">R.I.A</div>
 
@@ -285,148 +287,201 @@
 
 </div>
 
-<div id="sidebar">
+<div class="sidebar" id="sidebar">
 
-    <div class="menuItem">
-        <button onclick="toggleDropdown(0)">Home</button>
-        <div class="dropdown">
-            <button>Welcome Message</button>
-            <button>Latest Announcements</button>
-            <button>Upcoming Events</button>
-            <button>Quick Reminder</button>
-            <button>Featured Photos</button>
-            <button>Class Rules</button>
-            <button>School Calendar</button>
-            <button>Recent Activities Recap</button>
-            <button>Contact Us (R.I.A) </button>
-            <button>Feedback (R.I.A) </button>
-            <button>Announcements Archive</button>
-            <button>Theme</button>
-            <button>Class Schedule</button>
-            <button>Importants Links (R.I.A) </button>
-            <button>Fund Badget</button>
-            <button>Rankings</button>
-            <button>Grades</button>
-            <button>Weather & Class Suspension</button>
-            <button>News & Updates</button>
+    <div class="sidebar-header">
+        R.I.A Dashboard
+    </div>
+
+    <div class="sidebar-menu">
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(0)">
+                Home <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>Welcome Message</button>
+                <button>Latest Announcements (R.I.A)</button>
+                <button>Upcoming Events</button>
+                <button>Quick Reminder</button>
+                <button>Featured Photos</button>
+                <button>Class Rules</button>
+                <button>School Calendar</button>
+                <button>Recent Activities Recap</button>
+                <button>Contact Us (R.I.A)</button>
+                <button>Feedback (R.I.A)</button>
+                <button>Announcements Archive</button>
+                <button>Class Schedule</button>
+                <button>Importants Links (R.I.A)</button>
+                <button>Fund Badget</button>
+                <button>Grades (All Students)</button>
+                <button>Weather & Class Suspension</button>
+                <button>News & Updates</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(1)">
+                Cleaners <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>List of Cleaners</button>
+                <button>Cleaning Guidlines & Standards</button>
+                <button>Supplies Checklist</button>
+                <button>Attendance Record (Assigned Group)</button>
+                <button>Reminders & Tips</button>
+                <button>Feedback Form</button>
+                <button>Before/After Photo Upload</button>
+                <button>Area Status Check</button>
+                <button>File Report</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(2)">
+                Attendance <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>Daily Attendance Record</button>
+                <button>Weekly Summary</button>
+                <button>Monthly Report</button>
+                <button>Absents & Late Lists</button>
+                <button>Excuse Slip Submission</button>
+                <button>Attendance Guidelines</button>
+                <button>Adviser Record</button>
+                <button>Overall Attendance Status</button>
+                <button>Medical Certificate Upload</button>
+                <button>Attendance Percentage</button>
+                <button>Correction Request Form</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(3)">
+                Officers <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>President</button>
+                <button>Vice President</button>
+                <button>Secretary</button>
+                <button>External Secretary</button>
+                <button>Treasurer</button>
+                <button>Auditor</button>
+                <button>President</button>
+                <button>P.I.O</button>
+                <button>S.M.M</button>
+                <button>PO1</button>
+                <button>PO2</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(4)">
+                Modules <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>All Subjects</button>
+                <button>Weekly Modules</button>
+                <button>Download Materials</button>
+                <button>Assigmenst Instructions</button>
+                <button>Submission Links</button>
+                <button>Reviewers & References</button>
+                <button>Missing Requirements</button>
+                <button>Archive Modules</button>
+                <button>File Request Form</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(5)">
+                Settings <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>Edit Profile (Pro Mode)</button>
+                <button>Change Password</button>
+                <button>Notificatons</button>
+                <button>Privacy Settings</button>
+                <button>Help & Support</button>
+                <button>About This Website</button>
+                <button>Contact Developer</button>
+                <button>Emergency Contact</button>
+                <button>R.I.A Code (Selected Users)</button>
+                <button>Term of Use</button>
+                <button>Share Website Link</button>
+                <button>Backup & Restore</button>
+                <button>Switch Mode (Professional / Formal)</button>
+                <button>Time Zone Settings (Pro Mode)</button>
+                <button>Animation Toggle</button>
+                <button>Upload BG Video (Pro Mode)</button>
+            </div>
+        </div>
+
+        <div class="menuItem">
+            <button class="mainBtn" onclick="toggleDropdown(6)">
+                Special <span class="arrow-icon">▼</span>
+            </button>
+            <div class="dropdown">
+                <button>Research (R.I.A)</button>
+                <button>Admin Exclusive</button>
+                <button>Private Records</button>
+                <button>Restricted Section (Officers)</button>
+                <button>Officers & Adviser Notes</button>
+                <button>Access Log & Visitor History</button>
+                <button>Disciplinary Case Notes</button>
+                <button>Teacher Dashboard</button>
+                <button>Student Progress</button>
+                <button>Pending Submissions</button>
+                <button>Research Monitoring</button>
+                <button>AI Study Assistant (Classified)</button>
+                <button>Research Hub</button>
+                <button>Student Dashboard</button>
+                <button>Request Music</button>
+            </div>
         </div>
     </div>
 
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(1)">Cleaners</button>
-        <div class="dropdown">
-            <button>List of Cleaners</button>
-            <button>Cleaning Guidlines & Standards</button>
-            <button>Supplies Checklist</button>
-            <button>Attendance Record</button>
-            <button>Reminders & Tips</button>
-            <button>Feedback Form</button>
-            <button>Before/After Photo Upload</button>
-            <button>Specific Task Assignments</button>
-            <button>Area Status Check</button>
-            <button>Submit Finished Report</button>
+    <div class="sidebar-bottom">
+        <div class="slideshow-wrapper">
+            <div class="slideshow-header">
+                <span class="slideshow-title">Today's Feature</span>
+                <button class="see-more-btn" type="button">See More</button>
+            </div>
+            <div class="slideshow-container">
+                <div class="slide active-slide">
+                    <img src="b1.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="b2.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="b3.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="b4.jpg" alt="Slide 4">
+                </div>
+            </div>
         </div>
+
+<div class="vertical-buttons-container">
+            <button class="vertical-btn" onclick="openModal('R.I.A Pro', '⭐ R.I.A Pro: Explore exclusive deals, advanced membership perks, and high-tier platform features.')">⭐ R.I.A Pro (Deals & Features)</button>
+            <button class="vertical-btn" onclick="openModal('Theme Settings', '🎨 Theme: Customize your workspace experience by switching between Dark and Light display modes.')">🎨 Theme (Dark / Light Mode)</button>
+            <button class="vertical-btn" onclick="openModal('Rankings', '🏆 Rankings: View top-performing student lists, leaderboards, and activity rankings.')">🏆 Rankings (Top)</button>
+            <button class="vertical-btn" onclick="openModal('Special User Section', '🛡️ Special User Section: Access restricted user privileges, VIP tools, and designated utilities.')">🛡️ Special User Section</button>
+            <button class="vertical-btn" onclick="openModal('Super AI', '🤖 Super AI: Interact with your advanced neural assistant (STX) for queries, automation, and study help.')">🤖 Super AI (STX)</button>
+            <button class="vertical-btn" onclick="openModal('Albums', '🖼️ Albums: Browse organized media files containing pictures, project snapshots, and videos.')">🖼️ Albums (Pictures & Videos)</button>
+        </div>
+
+        <!-- Long Box with 4 Icon Buttons -->
+        <div class="icon-long-box">
+            <button class="icon-btn" onclick="openModal('Analytics Dashboard', '📈 Analytics: Review real-time metrics, platform traffic data, and engagement trends.')">📈</button>
+            <button class="icon-btn" onclick="openModal('Search Utility', '🔍 Search: Enter keywords to quickly find files, links, modules, or announcements.')">🔍</button>
+            <button class="icon-btn" onclick="openModal('Portfolio View', '📁 Portfolio: Inspect user achievements, uploaded files, and stored credential items.')">📁</button>
+            <button class="icon-btn" onclick="openModal('Document Repository', '📄 Document Repository: Access all official documents, forms, and downloadable attachments.')">📄</button>
+        </div>
+
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">Close</button>
     </div>
 
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(2)">Attendance</button>
-        <div class="dropdown">
-            <button>Daily Attendance Record</button>
-            <button>Weekly Summary</button>
-            <button>Monthly Report</button>
-            <button>Absents & Late Lists</button>
-            <button>Excuse Slip Submission</button>
-            <button>Attendance Guidelines</button>
-            <button>Adviser Record</button>
-            <button>Overall Attendance Status</button>
-            <button>Medical Certificate Upload</button>
-            <button>Attendance Percentage</button>
-            <button>Correction Request Form</button>
-        </div>
-    </div>
-
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(3)">Officers</button>
-        <div class="dropdown">
-            <button>President</button>
-            <button>Vice President</button>
-            <button>Secretary</button>
-            <button>External Secretary</button>
-            <button>Treasurer</button>
-            <button>Auditor</button>
-            <button>President</button>
-            <button>P.I.O</button>
-            <button>S.M.M</button>
-            <button>PO1</button>
-            <button>PO2</button>
-        </div>
-    </div>
-
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(4)">Modules</button>
-        <div class="dropdown">
-            <button>All Subjects</button>
-            <button>Weekly Modules</button>
-            <button>Download Materials</button>
-            <button>Assigmenst Instructions</button>
-            <button>Submission Links</button>
-            <button>Reviewers & References</button>
-            <button>Missing Requirements</button>
-            <button>Archive Modules</button>
-            <button>File Request Form</button>
-            <button>Grade Reference Guide</button>
-        </div>
-    </div>
-
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(5)">Settings</button>
-        <div class="dropdown">
-            <button>Edit Profile</button>
-            <button>Change Password</button>
-            <button>Notificatons</button>
-            <button>Privacy Settings</button>
-            <button>Help & Support</button>
-            <button>About This Website</button>
-            <button>Contact Developer</button>
-            <button>Emergency Contact</button>
-            <button>Class Code</button>
-            <button>Term of Use</button>
-            <button>Share Website Link</button>
-            <button>Backup & Restore</button>
-            <button>Switch Mode</button>
-            <button>Time Zone Settings</button>
-            <button>Animation Toggle</button>
-            <button>Super AI</button>
-            <button>Upload BG Video</button>
-        </div>
-    </div>
-
-    <div class="menuItem">
-        <button class="mainBtn" onclick="toggleDropdown(6)">Special</button>
-        <div class="dropdown">
-            <button>Research (R.I.A)</button>
-            <button>Admin Exclusive</button>
-            <button>Private Records</button>
-            <button>Restricted Area</button>
-            <button>Premium Access (R.I.A Pro) </button>
-            <button>Officers & Adviser Only</button>
-            <button>Developer's System Controls</button>
-            <button>Access Log & Visitor History</button>
-            <button>Disciplinary Case Notes</button>
-            <button>Teacher Dashboard</button>
-            <button>Student Progress</button>
-            <button>Pending Submissions</button>
-            <button>Research Monitoring</button>
-            <button>AI Study Assistant (Classified) </button>
-            <button>Portfolio</button>
-            <button>Research Hub</button>
-            <button>Student Dashboard</button>
-            <button>Request Music</button>
-            <button>Document Repository (R.I.A / Website) </button>
-            <button>Analytics</button>
-            <button>Albums</button>
-        </div>
-    </div>
+</div>
 
 </div>
 
@@ -688,6 +743,27 @@
     </div>
 </div>
 
+<div id="info-modal" class="ria-sys-modal-overlay">
+    <div class="ria-sys-modal-content">
+        <button class="ria-sys-close-btn1" onclick="toggleSteps()">&times;</button>
+        
+        <div class="ria-sys-modal-info">
+            <h2>Super AI George</h2>
+            <p>Meet George, your advanced Super AI assistant engineered to streamline workflows, optimize web applications, and elevate digital performance to the next level.</p>
+            <ul>
+                <li>Autonomous frontend architecture & UI optimization</li>
+                <li>Real-time data processing and intelligent system diagnostics</li>
+                <li>Seamless responsive design integration across all platforms</li>
+            </ul>
+            <p>George operates at the intersection of high-performance code and minimalist design aesthetics, ensuring your applications remain sleek, modern, and lightning-fast. Designed for creators, developers, and visionaries who demand absolute precision and reliability.</p>
+        </div>
+
+        <div class="ria-sys-modal-image">
+            <img src="ai.jpg" alt="Super AI George Visual">
+        </div>
+    </div>
+</div>
+
 <div id="musicWarning" class="musicWarning">
     <div class="warningBox">
         <h2>⚠ Music Notice</h2>
@@ -781,7 +857,7 @@
 
 <div class="notificationItem" onclick="openNotification(
 'Age Restricted Content & Guidance Protocol',
-'Compliance Directive: Certain sub-modules, user forums, media outputs, and operational features within this network contain explicit, advanced, or high-level technical documentation that requires mature oversight and technical comprehension. Select sections may feature visual media or themes intended exclusively for audiences aged 18 and older.\n\nBy accessing these specialized sections, users confirm that they meet the minimum age requirements and possess the necessary clearance to view age-restricted assets. Unsupervised access by minors is strictly discouraged, and parental guidance or site filter restrictions should be implemented where appropriate to prevent unauthorized access to mature content modules.'
+'Compliance Directive: Certain sub-modules, user forums, media outputs, and operational features within this system contain explicit, advanced, or high-level technical documentation that requires mature oversight and technical comprehension. Select sections may feature visual media or themes intended exclusively for audiences aged 18 and older.\n\nBy accessing these specialized sections, users confirm that they meet the minimum age requirements and possess the necessary clearance to view age-restricted assets. Unsupervised access by minors is strictly discouraged, and parental guidance or site filter restrictions should be implemented where appropriate to prevent unauthorized access to mature content modules.'
 )">
     <b>Age Restricted Content</b>
     <p>Age requirements and guidance policies...</p>
